@@ -1,0 +1,2 @@
+<small class="badge badge-<?php echo e($colour); ?>"><?php echo e($text); ?></small>
+<?php /**PATH D:\projects\personal projects\task-management-app\vendor\knuckleswtf\scribe\src/../resources/views//components/badges/base.blade.php ENDPATH**/ ?>
