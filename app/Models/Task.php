@@ -32,7 +32,7 @@ class Task extends Model
 
     public function assignee()
     {
-        return $this->hasOneThrough(BoardUser::class, User::class, 'id', 'user_id');
+        return $this->belongsTo(BoardUser::class);
     }
 
     public function labels()

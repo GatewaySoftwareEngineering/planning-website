@@ -1,16 +1,16 @@
-name: 'Role management'
+name: 'Permission management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/roles
+    uri: api/permissions
     metadata:
-      groupName: 'Role management'
+      groupName: 'Permission management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display a listing of roles.'
+      title: 'Display a listing of the permissions.'
       description: ''
       authenticated: true
       custom: []
@@ -33,9 +33,9 @@ endpoints:
         custom: []
       -
         status: 200
-        content: '[{"id":1,"name":"product_owner","display_name":"Product Owner","created_at":"2023-02-04T09:09:56.000000Z","updated_at":"2023-02-04T09:09:56.000000Z"},{"id":2,"name":"developer","display_name":"Developer","created_at":"2023-02-04T09:11:23.000000Z","updated_at":"2023-02-04T09:11:23.000000Z"},{"id":3,"name":"tester","display_name":"Tester","created_at":"2023-02-04T09:11:54.000000Z","updated_at":"2023-02-04T09:11:54.000000Z"}]'
+        content: '[{"id":1,"name":"create_user","display_name":"Create user"},{"id":2,"name":"update_user","display_name":"Update user"},{"id":3,"name":"delete_user","display_name":"Delete user"},{"id":4,"name":"browse_user","display_name":"Browse users"},{"id":5,"name":"browse_role","display_name":"Browse roles"},{"id":6,"name":"create_role","display_name":"Create role"},{"id":7,"name":"update_role","display_name":"Update role"},{"id":8,"name":"delete_role","display_name":"Delete role"},{"id":9,"name":"browse_permission","display_name":"Browse permissions"},{"id":10,"name":"create_permission","display_name":"Create permissions"},{"id":11,"name":"update_permission","display_name":"Update permission"},{"id":12,"name":"delete_permission","display_name":"Delete permission"},{"id":13,"name":"browse_board","display_name":"Browse boards"},{"id":14,"name":"create_board","display_name":"Create board"},{"id":15,"name":"update_board","display_name":"Update board"},{"id":16,"name":"delete_board","display_name":"Delete board"},{"id":17,"name":"browse_status","display_name":"Browse statuses"},{"id":18,"name":"create_status","display_name":"Create statuses"},{"id":19,"name":"update_status","display_name":"Update status"},{"id":20,"name":"delete_status","display_name":"Delete status"},{"id":21,"name":"browse_label","display_name":"Browse labels"},{"id":22,"name":"create_label","display_name":"Create label"},{"id":23,"name":"update_label","display_name":"Update label"},{"id":24,"name":"delete_label","display_name":"Delete label"},{"id":25,"name":"browse_task","display_name":"Browse tasks"},{"id":26,"name":"create_task","display_name":"Create task"},{"id":27,"name":"update_task","display_name":"Update task"},{"id":28,"name":"delete_task","display_name":"Delete task"}]'
         headers: []
-        description: 'unauthenticated user retrieve roles'
+        description: 'unauthenticated user retrieve permissions'
         custom: []
     responseFields: []
     auth: []
@@ -46,13 +46,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/roles
+    uri: api/permissions
     metadata:
-      groupName: 'Role management'
+      groupName: 'Permission management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Store a newly created role in storage.'
+      title: 'Store a newly created permission in storage.'
       description: ''
       authenticated: true
       custom: []
@@ -68,19 +68,27 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: est
+        example: minus
         type: string
         custom: []
       display_name:
         name: display_name
         description: ''
         required: true
-        example: ipsam
+        example: dolor
+        type: string
+        custom: []
+      entity_name:
+        name: entity_name
+        description: ''
+        required: true
+        example: rerum
         type: string
         custom: []
     cleanBodyParameters:
-      name: est
-      display_name: ipsam
+      name: minus
+      display_name: dolor
+      entity_name: rerum
     fileParameters: []
     responses:
       -
@@ -91,9 +99,9 @@ endpoints:
         custom: []
       -
         status: 200
-        content: '{"message":"Success","data":{"name":"admin","display_name":"Admin","id":1}}'
+        content: '{"message":"Success","data":{"name":"test","display_name":"Change task''s status from any status to another","entity_name":"tasks","id":45}}'
         headers: []
-        description: 'unauthenticated user create new role'
+        description: 'unauthenticated user creates new permission'
         custom: []
     responseFields: []
     auth: []
@@ -104,13 +112,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/roles/{id}'
+    uri: 'api/permissions/{id}'
     metadata:
-      groupName: 'Role management'
+      groupName: 'Permission management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display the specified role.'
+      title: 'Display the specified permission.'
       description: ''
       authenticated: true
       custom: []
@@ -120,7 +128,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the role.'
+        description: 'The ID of the permission.'
         required: true
         example: 1
         type: integer
@@ -152,13 +160,13 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/roles/{id}'
+    uri: 'api/permissions/{id}'
     metadata:
-      groupName: 'Role management'
+      groupName: 'Permission management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update the specified role in storage.'
+      title: 'Update the specified permission in storage.'
       description: ''
       authenticated: true
       custom: []
@@ -168,7 +176,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the role.'
+        description: 'The ID of the permission.'
         required: true
         example: 1
         type: integer
@@ -177,54 +185,10 @@ endpoints:
       id: 1
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      display_name:
-        name: display_name
-        description: ''
-        required: false
-        example: cum
-        type: string
-        custom: []
-      permissions:
-        name: permissions
-        description: ''
-        required: false
-        example:
-          - []
-        type: 'object[]'
-        custom: []
-      'permissions[].id':
-        name: 'permissions[].id'
-        description: ''
-        required: true
-        example: perferendis
-        type: string
-        custom: []
-    cleanBodyParameters:
-      display_name: cum
-      permissions:
-        -
-          id: perferendis
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers: []
-        description: 'unauthenticated user'
-        custom: []
-      -
-        status: 422
-        content: '{"message":"The email must be a valid email address.","errors":{"email":["The email must be a valid email address."]}}'
-        headers: []
-        description: 'Invalid inputs'
-        custom: []
-      -
-        status: 200
-        content: '{"message":"Success","data":{"id":3,"name":"tester","display_name":"Tester"}}'
-        headers: []
-        description: 'unauthenticated user create new role'
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -234,13 +198,13 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/roles/{id}'
+    uri: 'api/permissions/{id}'
     metadata:
-      groupName: 'Role management'
+      groupName: 'Permission management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Remove the specified role from storage.'
+      title: 'Remove the specified permission from storage.'
       description: ''
       authenticated: true
       custom: []
@@ -250,7 +214,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the role.'
+        description: 'The ID of the permission.'
         required: true
         example: 1
         type: integer

@@ -21,7 +21,7 @@ class TaskIndexResource extends JsonResource
             'description'    => $this->description,
             'image'          => $this->image,
             'due_date'       => $this->due_date,
-            'assignee'       => $this->assignee?->user->name,
+            'assignee'       => $this->assignee->user->name,
             'current_status' => $this->currentStatus->name,
             'labels'         => LabelShowResource::collection($this->labels)
         ];

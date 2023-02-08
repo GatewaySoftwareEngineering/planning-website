@@ -41,4 +41,5 @@ Route::middleware('auth:api')->group(function () {
     Route::scopeBindings()->put('boards/{board}/tasks/{task}/assign',  [TaskController::class, 'assign']);
     Route::scopeBindings()->put('boards/{board}/tasks/{task}/move',  [TaskController::class, 'move']);
     Route::scopeBindings()->apiResource('boards.tasks',  TaskController::class);
+    Route::post('auth/logout', [AuthController::class, 'logout']);
 });

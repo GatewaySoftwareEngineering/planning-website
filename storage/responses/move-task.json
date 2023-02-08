@@ -1,1 +1,1 @@
-{"message":"Success","data":{"id":2,"board_id":2,"status_id":2,"assignee_id":null,"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","created_at":"2023-02-07T17:17:48.000000Z","updated_at":"2023-02-08T06:54:33.000000Z"}}
+{"message":"Success","data":{"id":10,"title":"Task 1","description":"Task 1 description","image":null,"due_date":"2023-02-10","assignee":null,"current_status":"to-do","labels":[{"id":1,"name":"Api"},{"id":2,"name":"Website"}]}}

@@ -15,10 +15,12 @@ class ActivityShowResource extends JsonResource
      */
     public function toArray($request)
     {
+        $assignee=User::find($this->pivot->assignee_id);
+        $assignor=User::find($this->pivot->assignor_id);
         return[
             'status' => $this->name,
-            'assignor' => User::find($this->pivot->assignor_id)?->name,
-            'assignee' => User::find($this->pivot->assignee_id)?->name,
+            'assignor' => $assignor? $assignor->name :null,
+            'assignee' => $assignee? $assignee->name :null,
             'details' => $this->pivot->details,
         ];
     }

@@ -36,27 +36,27 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: mollitia
+        example: facilis
         type: string
         custom: []
       limit:
         name: limit
         description: ''
         required: false
-        example: 6
+        example: 8
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 9
+        example: 8
         type: integer
         custom: []
     cleanBodyParameters:
-      name: mollitia
-      limit: 6
-      page: 9
+      name: facilis
+      limit: 8
+      page: 8
     fileParameters: []
     responses:
       -
@@ -116,11 +116,11 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: consequatur
+        example: expedita
         type: string
         custom: []
     cleanBodyParameters:
-      name: consequatur
+      name: expedita
     fileParameters: []
     responses:
       -
@@ -259,11 +259,11 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: sint
+        example: modi
         type: string
         custom: []
     cleanBodyParameters:
-      name: sint
+      name: modi
     fileParameters: []
     responses:
       -

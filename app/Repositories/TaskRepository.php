@@ -77,7 +77,7 @@ class TaskRepository extends BaseRepository
         $task->update([
             'assignee_id' => $assignee->pivot->id
         ]);
-        event(new TakingAnActionOnTask($task, 'Task assigned to' . $assignee->user_id));
+        event(new TakingAnActionOnTask($task, 'Task assigned to ' . $assignee->name));
         return new TaskIndexResource($task);
     }
 
@@ -91,7 +91,7 @@ class TaskRepository extends BaseRepository
         $task->update([
             'status_id' => $data['status_id']
         ]);
-        event(new TakingAnActionOnTask($task, 'Task moved from' . $oldStatus->name . 'To ' . $newStatus->name));
+        event(new TakingAnActionOnTask($task, 'Task moved from ' . $oldStatus->name . 'To ' . $newStatus->name));
         return new TaskIndexResource($task);
     }
 }

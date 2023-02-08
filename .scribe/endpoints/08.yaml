@@ -29,12 +29,12 @@ endpoints:
         name: task_id
         description: 'The ID of the task.'
         required: true
-        example: 2
+        example: 10
         type: integer
         custom: []
     cleanUrlParameters:
       board_id: 2
-      task_id: 2
+      task_id: 10
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -42,11 +42,11 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: et
+        example: alias
         type: string
         custom: []
     cleanBodyParameters:
-      user_id: et
+      user_id: alias
     fileParameters: []
     responses:
       -
@@ -69,7 +69,7 @@ endpoints:
         custom: []
       -
         status: 200
-        content: '{"message":"Success","data":{"id":3,"board_id":4,"status_id":2,"assignee_id":11,"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","created_at":"2023-02-07T17:18:17.000000Z","updated_at":"2023-02-08T09:06:41.000000Z","board":{"id":4,"user_id":2,"name":"Project 1","description":"First project","created_at":"2023-02-05T12:58:21.000000Z","updated_at":"2023-02-05T12:58:21.000000Z","owner":{"id":2,"role_id":5,"name":"Product owner","active":1,"email":"product_ower@example.com","email_verified_at":null,"created_at":"2023-02-05T09:44:02.000000Z","updated_at":"2023-02-05T09:44:02.000000Z"}},"assignee":{"id":9,"board_id":2,"user_id":3,"created_at":"2023-02-06T07:14:45.000000Z","updated_at":"2023-02-06T07:14:45.000000Z","laravel_through_key":3}}}'
+        content: '{"message":"Success","data":{"id":10,"title":"Task 1","description":"Task 1 description","image":null,"due_date":"2023-02-10","assignee":null,"current_status":"in-progress","labels":[{"id":1,"name":"Api"},{"id":2,"name":"Website"}]}}'
         headers: []
         description: 'unauthenticated user assigns a task to user'
         custom: []
@@ -107,12 +107,12 @@ endpoints:
         name: task_id
         description: 'The ID of the task.'
         required: true
-        example: 2
+        example: 10
         type: integer
         custom: []
     cleanUrlParameters:
       board_id: 2
-      task_id: 2
+      task_id: 10
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -120,11 +120,11 @@ endpoints:
         name: status_id
         description: ''
         required: true
-        example: perferendis
+        example: aperiam
         type: string
         custom: []
     cleanBodyParameters:
-      status_id: perferendis
+      status_id: aperiam
     fileParameters: []
     responses:
       -
@@ -147,9 +147,95 @@ endpoints:
         custom: []
       -
         status: 200
-        content: '{"message":"Success","data":{"id":2,"board_id":2,"status_id":2,"assignee_id":null,"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","created_at":"2023-02-07T17:17:48.000000Z","updated_at":"2023-02-08T06:54:33.000000Z"}}'
+        content: '{"message":"Success","data":{"id":10,"title":"Task 1","description":"Task 1 description","image":null,"due_date":"2023-02-10","assignee":null,"current_status":"to-do","labels":[{"id":1,"name":"Api"},{"id":2,"name":"Website"}]}}'
         headers: []
         description: 'unauthenticated user moves a task to another status'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/boards/{board_id}/tasks'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the tasks.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      board_id:
+        name: board_id
+        description: 'The ID of the board.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      board_id: 2
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: ''
+        required: false
+        example: ex
+        type: string
+        custom: []
+      limit:
+        name: limit
+        description: ''
+        required: false
+        example: 14
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 19
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      title: ex
+      limit: 14
+      page: 19
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'unauthenticated user'
+        custom: []
+      -
+        status: 422
+        content: '{"message":"The email must be a valid email address.","errors":{"email":["The email must be a valid email address."]}}'
+        headers: []
+        description: 'Invalid inputs'
+        custom: []
+      -
+        status: 403
+        content: '{"message":"This action is unauthorized."}'
+        headers: []
+        description: Forbidden
+        custom: []
+      -
+        status: 200
+        content: '{"data":[{"id":3,"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","assignee":"Developer","current_status":"in-progress","labels":[]},{"id":2,"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","assignee":null,"current_status":"in-progress","labels":[]}],"pagination":{"total_count":2,"total_pages":1,"current_page":1,"limit":10}}'
+        headers: []
+        description: 'unauthenticated user browses tasks'
         custom: []
     responseFields: []
     auth: []
@@ -204,35 +290,35 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: necessitatibus
+        example: consequatur
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: false
-        example: 'Totam voluptatem sit perferendis illo eaque.'
+        example: 'Est dicta aperiam explicabo.'
         type: string
         custom: []
       image:
         name: image
         description: ''
         required: false
-        example: officia
+        example: cupiditate
         type: string
         custom: []
       due_date:
         name: due_date
         description: 'Must be a valid date.'
         required: true
-        example: '2023-02-08T11:55:09'
+        example: '2023-02-08T17:51:39'
         type: string
         custom: []
       0:
         name: '0'
         description: 'Must be a date after or equal to <code>today</code>.'
         required: false
-        example: '2069-05-24'
+        example: '2049-09-24'
         type: string
         custom: []
       labels:
@@ -240,25 +326,24 @@ endpoints:
         description: ''
         required: false
         example:
-          - []
-        type: 'object[]'
+          - accusamus
+        type: 'string[]'
         custom: []
       'labels[].id':
         name: 'labels[].id'
         description: ''
         required: true
-        example: quod
+        example: neque
         type: string
         custom: []
     cleanBodyParameters:
-      title: necessitatibus
-      description: 'Totam voluptatem sit perferendis illo eaque.'
-      image: officia
-      due_date: '2023-02-08T11:55:09'
-      0: '2069-05-24'
+      title: consequatur
+      description: 'Est dicta aperiam explicabo.'
+      image: cupiditate
+      due_date: '2023-02-08T17:51:39'
+      0: '2049-09-24'
       labels:
-        -
-          id: quod
+        - accusamus
     fileParameters: []
     responses:
       -
@@ -281,7 +366,7 @@ endpoints:
         custom: []
       -
         status: 200
-        content: '{"message":"Success","data":{"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","status_id":1,"board_id":2,"updated_at":"2023-02-07T17:22:23.000000Z","created_at":"2023-02-07T17:22:23.000000Z","id":5,"board":{"id":2,"user_id":1,"name":"Project 1","description":"First project","created_at":"2023-02-05T12:08:58.000000Z","updated_at":"2023-02-05T14:11:34.000000Z","owner":{"id":1,"role_id":1,"name":"Dima","active":1,"email":"dimaaljammal9410@gmail.com","email_verified_at":null,"created_at":"2023-02-05T12:08:36.000000Z","updated_at":"2023-02-05T12:08:36.000000Z"}}}}'
+        content: '{"message":"Success","data":{"id":10,"title":"Task 1","description":"Task 1 description","image":null,"due_date":"2023-02-10","assignee":null,"current_status":"to-do","labels":[{"id":1,"name":"Api"}]}}'
         headers: []
         description: 'unauthenticated user creates new task'
         custom: []
@@ -319,12 +404,12 @@ endpoints:
         name: id
         description: 'The ID of the task.'
         required: true
-        example: 2
+        example: 10
         type: integer
         custom: []
     cleanUrlParameters:
       board_id: 2
-      id: 2
+      id: 10
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -351,7 +436,7 @@ endpoints:
         custom: []
       -
         status: 200
-        content: '{"message":"Success","data":{"id":3,"board_id":4,"status_id":2,"assignee_id":11,"title":"Test task","description":"test","image":null,"due_date":"2023-05-01","created_at":"2023-02-07T17:18:17.000000Z","updated_at":"2023-02-08T09:06:41.000000Z","board":{"id":4,"user_id":2,"name":"Project 1","description":"First project","created_at":"2023-02-05T12:58:21.000000Z","updated_at":"2023-02-05T12:58:21.000000Z","owner":{"id":2,"role_id":5,"name":"Product owner","active":1,"email":"product_ower@example.com","email_verified_at":null,"created_at":"2023-02-05T09:44:02.000000Z","updated_at":"2023-02-05T09:44:02.000000Z"}},"assignee":{"id":9,"board_id":2,"user_id":3,"created_at":"2023-02-06T07:14:45.000000Z","updated_at":"2023-02-06T07:14:45.000000Z","laravel_through_key":3}}}'
+        content: '{"message":"Success","data":{"id":10,"title":"Task 1","description":"Task 1 description","image":null,"due_date":"2023-02-10","assignee":null,"current_status":"in-progress","labels":[{"id":1,"name":"Api"},{"id":2,"name":"Website"}]}}'
         headers: []
         description: 'unauthenticated user assigns a task to user'
         custom: []
@@ -371,8 +456,8 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update the specified resource in storage.'
-      description: ''
+      title: 'Update the specified task in storage.'
+      description: .
       authenticated: false
       custom: []
     headers:
@@ -390,18 +475,113 @@ endpoints:
         name: id
         description: 'The ID of the task.'
         required: true
-        example: 2
+        example: 10
         type: integer
         custom: []
     cleanUrlParameters:
       board_id: 2
-      id: 2
+      id: 10
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      status_id:
+        name: status_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      assignee_id:
+        name: assignee_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      title:
+        name: title
+        description: ''
+        required: false
+        example: accusamus
+        type: string
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: false
+        example: 'Deleniti quod ipsum consequuntur illo.'
+        type: string
+        custom: []
+      image:
+        name: image
+        description: ''
+        required: false
+        example: sint
+        type: string
+        custom: []
+      due_date:
+        name: due_date
+        description: 'Must be a valid date.'
+        required: false
+        example: '2023-02-08T17:51:40'
+        type: string
+        custom: []
+      0:
+        name: '0'
+        description: 'Must be a date after or equal to <code>today</code>.'
+        required: false
+        example: '2094-09-24'
+        type: string
+        custom: []
+      labels:
+        name: labels
+        description: ''
+        required: false
+        example:
+          - voluptas
+        type: 'string[]'
+        custom: []
+      'labels[].id':
+        name: 'labels[].id'
+        description: ''
+        required: true
+        example: rerum
+        type: string
+        custom: []
+    cleanBodyParameters:
+      title: accusamus
+      description: 'Deleniti quod ipsum consequuntur illo.'
+      image: sint
+      due_date: '2023-02-08T17:51:40'
+      0: '2094-09-24'
+      labels:
+        - voluptas
     fileParameters: []
-    responses: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'unauthenticated user'
+        custom: []
+      -
+        status: 422
+        content: '{"message":"The email must be a valid email address.","errors":{"email":["The email must be a valid email address."]}}'
+        headers: []
+        description: 'Invalid inputs'
+        custom: []
+      -
+        status: 403
+        content: '{"message":"This action is unauthorized."}'
+        headers: []
+        description: Forbidden
+        custom: []
+      -
+        status: 200
+        content: '{"message":"Success","data":{"id":10,"title":"Task 1","description":"Task 1 description","image":null,"due_date":"2023-02-10","assignee":null,"current_status":"to-do","labels":[{"id":1,"name":"Api"},{"id":2,"name":"Website"}]}}'
+        headers: []
+        description: 'unauthenticated user creates new task'
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -436,12 +616,12 @@ endpoints:
         name: id
         description: 'The ID of the task.'
         required: true
-        example: 2
+        example: 10
         type: integer
         custom: []
     cleanUrlParameters:
       board_id: 2
-      id: 2
+      id: 10
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

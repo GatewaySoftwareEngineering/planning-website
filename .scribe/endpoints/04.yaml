@@ -1,16 +1,16 @@
-name: 'user management'
+name: 'Role management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/users
+    uri: api/roles
     metadata:
-      groupName: 'user management'
+      groupName: 'Role management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display a listing of the users.'
+      title: 'Display a listing of roles.'
       description: ''
       authenticated: true
       custom: []
@@ -21,48 +21,8 @@ endpoints:
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: false
-        example: dolor
-        type: string
-        custom: []
-      email:
-        name: email
-        description: ''
-        required: false
-        example: alize.kovacek@example.net
-        type: string
-        custom: []
-      role_id:
-        name: role_id
-        description: ''
-        required: false
-        example: 12
-        type: integer
-        custom: []
-      limit:
-        name: limit
-        description: ''
-        required: false
-        example: 7
-        type: integer
-        custom: []
-      page:
-        name: page
-        description: ''
-        required: false
-        example: 17
-        type: integer
-        custom: []
-    cleanBodyParameters:
-      name: dolor
-      email: alize.kovacek@example.net
-      role_id: 12
-      limit: 7
-      page: 17
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -72,16 +32,10 @@ endpoints:
         description: 'unauthenticated user'
         custom: []
       -
-        status: 403
-        content: '{"message":"This action is unauthorized."}'
-        headers: []
-        description: Forbidden
-        custom: []
-      -
         status: 200
-        content: '{"data":[{"id":3,"role_id":2,"name":"Developer","active":1,"email":"developer@example.com","email_verified_at":null,"created_at":"2023-02-05T09:45:18.000000Z","updated_at":"2023-02-05T09:45:18.000000Z"},{"id":2,"role_id":5,"name":"Product owner","active":1,"email":"product_ower@example.com","email_verified_at":null,"created_at":"2023-02-05T09:44:02.000000Z","updated_at":"2023-02-05T09:44:02.000000Z"}],"pagination":{"total_count":4,"total_pages":2,"current_page":2,"limit":2}}'
+        content: '[{"id":1,"name":"product_owner","display_name":"Product Owner","created_at":"2023-02-04T09:09:56.000000Z","updated_at":"2023-02-04T09:09:56.000000Z"},{"id":2,"name":"developer","display_name":"Developer","created_at":"2023-02-04T09:11:23.000000Z","updated_at":"2023-02-04T09:11:23.000000Z"},{"id":3,"name":"tester","display_name":"Tester","created_at":"2023-02-04T09:11:54.000000Z","updated_at":"2023-02-04T09:11:54.000000Z"}]'
         headers: []
-        description: 'unauthenticated user creates new user'
+        description: 'unauthenticated user retrieve roles'
         custom: []
     responseFields: []
     auth: []
@@ -92,13 +46,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/users
+    uri: api/roles
     metadata:
-      groupName: 'user management'
+      groupName: 'Role management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Store a newly created user in storage.'
+      title: 'Store a newly created role in storage.'
       description: ''
       authenticated: true
       custom: []
@@ -114,35 +68,19 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: eligendi
+        example: mollitia
         type: string
         custom: []
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: broderick.kemmer@example.net
-        type: string
-        custom: []
-      password:
-        name: password
+      display_name:
+        name: display_name
         description: ''
         required: true
-        example: ">2?''GU:VXGpBxJ7;l"
+        example: sit
         type: string
-        custom: []
-      role_id:
-        name: role_id
-        description: ''
-        required: true
-        example: 6
-        type: integer
         custom: []
     cleanBodyParameters:
-      name: eligendi
-      email: broderick.kemmer@example.net
-      password: ">2?''GU:VXGpBxJ7;l"
-      role_id: 6
+      name: mollitia
+      display_name: sit
     fileParameters: []
     responses:
       -
@@ -152,22 +90,10 @@ endpoints:
         description: 'unauthenticated user'
         custom: []
       -
-        status: 422
-        content: '{"message":"The email must be a valid email address.","errors":{"email":["The email must be a valid email address."]}}'
-        headers: []
-        description: 'Invalid inputs'
-        custom: []
-      -
-        status: 403
-        content: '{"message":"This action is unauthorized."}'
-        headers: []
-        description: Forbidden
-        custom: []
-      -
         status: 200
-        content: '{"message":"Success","data":{"name":"Product owner","email":"product_ower@example.com","role_id":"5","updated_at":"2023-02-05T09:44:02.000000Z","created_at":"2023-02-05T09:44:02.000000Z","id":2}}'
+        content: '{"message":"Success","data":{"name":"admin","display_name":"Admin","id":1}}'
         headers: []
-        description: 'unauthenticated user browses users'
+        description: 'unauthenticated user create new role'
         custom: []
     responseFields: []
     auth: []
@@ -178,13 +104,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/users/{id}'
+    uri: 'api/roles/{id}'
     metadata:
-      groupName: 'user management'
+      groupName: 'Role management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display the specified user.'
+      title: 'Display the specified role.'
       description: ''
       authenticated: true
       custom: []
@@ -194,7 +120,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user.'
+        description: 'The ID of the role.'
         required: true
         example: 1
         type: integer
@@ -210,20 +136,11 @@ endpoints:
       -
         status: 401
         content: '{"message":"Unauthenticated."}'
-        headers: []
-        description: 'unauthenticated user'
-        custom: []
-      -
-        status: 403
-        content: '{"message":"This action is unauthorized."}'
-        headers: []
-        description: Forbidden
-        custom: []
-      -
-        status: 200
-        content: '{"message":"Success","data":{"id":4,"role_id":3,"name":"Tester","active":1,"email":"tester@example.com","email_verified_at":null,"created_at":"2023-02-05T09:45:37.000000Z","updated_at":"2023-02-05T09:45:37.000000Z"}}'
-        headers: []
-        description: 'unauthenticated user shows status'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
     responseFields: []
     auth: []
@@ -235,13 +152,13 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/users/{id}'
+    uri: 'api/roles/{id}'
     metadata:
-      groupName: 'user management'
+      groupName: 'Role management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update the specified user in storage.'
+      title: 'Update the specified role in storage.'
       description: ''
       authenticated: true
       custom: []
@@ -251,7 +168,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user.'
+        description: 'The ID of the role.'
         required: true
         example: 1
         type: integer
@@ -261,47 +178,32 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      name:
-        name: name
+      display_name:
+        name: display_name
         description: ''
         required: false
-        example: consequuntur
+        example: eum
         type: string
         custom: []
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: false
-        example: zjohnson@example.net
+      permissions:
+        name: permissions
+        description: ''
+        required: true
+        example:
+          - et
+        type: 'string[]'
+        custom: []
+      'permissions[].id':
+        name: 'permissions[].id'
+        description: ''
+        required: true
+        example: et
         type: string
-        custom: []
-      password:
-        name: password
-        description: ''
-        required: false
-        example: 'vd+wqU[6ULqwWJ}ANbs'
-        type: string
-        custom: []
-      role_id:
-        name: role_id
-        description: ''
-        required: false
-        example: 11
-        type: integer
-        custom: []
-      is_active:
-        name: is_active
-        description: ''
-        required: false
-        example: true
-        type: boolean
         custom: []
     cleanBodyParameters:
-      name: consequuntur
-      email: zjohnson@example.net
-      password: 'vd+wqU[6ULqwWJ}ANbs'
-      role_id: 11
-      is_active: true
+      display_name: eum
+      permissions:
+        - et
     fileParameters: []
     responses:
       -
@@ -317,16 +219,10 @@ endpoints:
         description: 'Invalid inputs'
         custom: []
       -
-        status: 403
-        content: '{"message":"This action is unauthorized."}'
-        headers: []
-        description: Forbidden
-        custom: []
-      -
         status: 200
-        content: '{"message":"Success","data":{"id":5,"role_id":3,"name":"Tester 2","active":1,"email":"tester2@example.com","email_verified_at":null,"created_at":"2023-02-05T11:02:34.000000Z","updated_at":"2023-02-05T11:15:50.000000Z"}}'
+        content: '{"message":"Success","data":{"id":3,"name":"tester","display_name":"Tester"}}'
         headers: []
-        description: 'unauthenticated user updates a user'
+        description: 'unauthenticated user create new role'
         custom: []
     responseFields: []
     auth: []
@@ -337,13 +233,13 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'api/users/{id}'
+    uri: 'api/roles/{id}'
     metadata:
-      groupName: 'user management'
+      groupName: 'Role management'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Remove the specified user from storage.'
+      title: 'Remove the specified role from storage.'
       description: ''
       authenticated: true
       custom: []
@@ -353,7 +249,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user.'
+        description: 'The ID of the role.'
         required: true
         example: 1
         type: integer
@@ -365,25 +261,7 @@ endpoints:
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers: []
-        description: 'unauthenticated user'
-        custom: []
-      -
-        status: 403
-        content: '{"message":"This action is unauthorized."}'
-        headers: []
-        description: Forbidden
-        custom: []
-      -
-        status: 200
-        content: '{"message":"Success","data":true}'
-        headers: []
-        description: 'unauthenticated user deletes a user'
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null

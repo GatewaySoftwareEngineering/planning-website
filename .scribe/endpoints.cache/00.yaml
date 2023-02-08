@@ -28,19 +28,19 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: aliya.grady@example.com
+        example: delores85@example.com
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: S3a)4De^M>z`Xz$GI(s3
+        example: '}.:MW_V<1p|~V4k#L!'
         type: string
         custom: []
     cleanBodyParameters:
-      email: aliya.grady@example.com
-      password: S3a)4De^M>z`Xz$GI(s3
+      email: delores85@example.com
+      password: '}.:MW_V<1p|~V4k#L!'
     fileParameters: []
     responses:
       -
@@ -54,6 +54,48 @@ endpoints:
         content: '{"message":"Incorrect E-mail or password"}'
         headers: []
         description: 'Invalid credentials'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/logout
+    metadata:
+      groupName: Authentication
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: Logout
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Logout successfully","data":null}'
+        headers: []
+        description: 'When authenticated'
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: ''
         custom: []
     responseFields: []
     auth: []
