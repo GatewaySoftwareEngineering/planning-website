@@ -1,0 +1,235 @@
+name: 'Permission management'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/permissions
+    metadata:
+      groupName: 'Permission management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the permissions.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'unauthenticated user'
+        custom: []
+      -
+        status: 200
+        content: '[{"id":1,"name":"create_user","display_name":"Create user"},{"id":2,"name":"update_user","display_name":"Update user"},{"id":3,"name":"delete_user","display_name":"Delete user"},{"id":4,"name":"browse_user","display_name":"Browse users"},{"id":5,"name":"browse_role","display_name":"Browse roles"},{"id":6,"name":"create_role","display_name":"Create role"},{"id":7,"name":"update_role","display_name":"Update role"},{"id":8,"name":"delete_role","display_name":"Delete role"},{"id":9,"name":"browse_permission","display_name":"Browse permissions"},{"id":10,"name":"create_permission","display_name":"Create permissions"},{"id":11,"name":"update_permission","display_name":"Update permission"},{"id":12,"name":"delete_permission","display_name":"Delete permission"},{"id":13,"name":"browse_board","display_name":"Browse boards"},{"id":14,"name":"create_board","display_name":"Create board"},{"id":15,"name":"update_board","display_name":"Update board"},{"id":16,"name":"delete_board","display_name":"Delete board"},{"id":17,"name":"browse_status","display_name":"Browse statuses"},{"id":18,"name":"create_status","display_name":"Create statuses"},{"id":19,"name":"update_status","display_name":"Update status"},{"id":20,"name":"delete_status","display_name":"Delete status"},{"id":21,"name":"browse_label","display_name":"Browse labels"},{"id":22,"name":"create_label","display_name":"Create label"},{"id":23,"name":"update_label","display_name":"Update label"},{"id":24,"name":"delete_label","display_name":"Delete label"},{"id":25,"name":"browse_task","display_name":"Browse tasks"},{"id":26,"name":"create_task","display_name":"Create task"},{"id":27,"name":"update_task","display_name":"Update task"},{"id":28,"name":"delete_task","display_name":"Delete task"}]'
+        headers: []
+        description: 'unauthenticated user retrieve permissions'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/permissions
+    metadata:
+      groupName: 'Permission management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created permission in storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: iusto
+        type: string
+        custom: []
+      display_name:
+        name: display_name
+        description: ''
+        required: true
+        example: ipsum
+        type: string
+        custom: []
+      entity_name:
+        name: entity_name
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: iusto
+      display_name: ipsum
+      entity_name: voluptas
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'unauthenticated user'
+        custom: []
+      -
+        status: 200
+        content: '{"message":"Success","data":{"name":"test","display_name":"Change task''s status from any status to another","entity_name":"tasks","id":45}}'
+        headers: []
+        description: 'unauthenticated user creates new permission'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/permissions/{id}'
+    metadata:
+      groupName: 'Permission management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified permission.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the permission.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/permissions/{id}'
+    metadata:
+      groupName: 'Permission management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified permission in storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the permission.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/permissions/{id}'
+    metadata:
+      groupName: 'Permission management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified permission from storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the permission.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

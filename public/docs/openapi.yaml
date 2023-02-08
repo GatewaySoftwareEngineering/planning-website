@@ -1,0 +1,3566 @@
+openapi: 3.0.3
+info:
+  title: 'Task management documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8015'
+paths:
+  /api/auth/login:
+    post:
+      summary: Login
+      operationId: login
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'When E-mail and password are valid and user is active'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    name: Dima
+                    active: 1
+                    email: dimaaljammal9410@gmail.com
+                    email_verified_at: null
+                    created_at: '2023-02-04T09:43:39.000000Z'
+                    updated_at: '2023-02-04T09:43:39.000000Z'
+                  token: 2|Xa6ztHsI7rtEHAUreuF1bjkgNvMCiUv8jo8vjTod
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Dima
+                      active:
+                        type: integer
+                        example: 1
+                      email:
+                        type: string
+                        example: dimaaljammal9410@gmail.com
+                      email_verified_at:
+                        type: string
+                        example: null
+                      created_at:
+                        type: string
+                        example: '2023-02-04T09:43:39.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-04T09:43:39.000000Z'
+                  token:
+                    type: string
+                    example: 2|Xa6ztHsI7rtEHAUreuF1bjkgNvMCiUv8jo8vjTod
+        401:
+          description: 'Invalid credentials'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Incorrect E-mail or password'
+                properties:
+                  message:
+                    type: string
+                    example: 'Incorrect E-mail or password'
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: zthompson@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: "?iqmKOA,z9VDiM2X;ZX'"
+              required:
+                - email
+                - password
+      security: []
+  '/api/boards/{board_id}/invite':
+    put:
+      summary: 'Invite user to board'
+      operationId: inviteUserToBoard
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user invite specified user to a board'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 2
+                    user_id: 1
+                    name: 'Project 2'
+                    description: 'Our first project'
+                    created_at: '2023-02-05T12:08:58.000000Z'
+                    updated_at: '2023-02-05T14:11:34.000000Z'
+                    owner:
+                      id: 1
+                      role_id: 1
+                      name: Dima
+                      active: 1
+                      email: dimaaljammal9410@gmail.com
+                      email_verified_at: null
+                      created_at: '2023-02-05T12:08:36.000000Z'
+                      updated_at: '2023-02-05T12:08:36.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      user_id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Project 2'
+                      description:
+                        type: string
+                        example: 'Our first project'
+                      created_at:
+                        type: string
+                        example: '2023-02-05T12:08:58.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T14:11:34.000000Z'
+                      owner:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          role_id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: Dima
+                          active:
+                            type: integer
+                            example: 1
+                          email:
+                            type: string
+                            example: dimaaljammal9410@gmail.com
+                          email_verified_at:
+                            type: string
+                            example: null
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:08:36.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T12:08:36.000000Z'
+      tags:
+        - 'Board management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: odit
+              required:
+                - user_id
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/boards:
+    get:
+      summary: 'Display a listing of the boards.'
+      operationId: displayAListingOfTheBoards
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 13
+                      user_id: 1
+                      name: project3
+                      description: null
+                      created_at: '2023-02-05T16:10:08.000000Z'
+                      updated_at: '2023-02-05T16:10:08.000000Z'
+                    -
+                      id: 5
+                      user_id: 2
+                      name: 'Project 2'
+                      description: null
+                      created_at: '2023-02-05T12:59:38.000000Z'
+                      updated_at: '2023-02-05T12:59:38.000000Z'
+                    -
+                      id: 2
+                      user_id: 1
+                      name: 'Project 2'
+                      description: 'Our first project'
+                      created_at: '2023-02-05T12:08:58.000000Z'
+                      updated_at: '2023-02-05T14:11:34.000000Z'
+                  pagination:
+                    total_count: 3
+                    total_pages: 1
+                    current_page: 1
+                    limit: 10
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 13
+                        user_id: 1
+                        name: project3
+                        description: null
+                        created_at: '2023-02-05T16:10:08.000000Z'
+                        updated_at: '2023-02-05T16:10:08.000000Z'
+                      -
+                        id: 5
+                        user_id: 2
+                        name: 'Project 2'
+                        description: null
+                        created_at: '2023-02-05T12:59:38.000000Z'
+                        updated_at: '2023-02-05T12:59:38.000000Z'
+                      -
+                        id: 2
+                        user_id: 1
+                        name: 'Project 2'
+                        description: 'Our first project'
+                        created_at: '2023-02-05T12:08:58.000000Z'
+                        updated_at: '2023-02-05T14:11:34.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 13
+                        user_id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: project3
+                        description:
+                          type: string
+                          example: null
+                        created_at:
+                          type: string
+                          example: '2023-02-05T16:10:08.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-02-05T16:10:08.000000Z'
+                  pagination:
+                    type: object
+                    properties:
+                      total_count:
+                        type: integer
+                        example: 3
+                      total_pages:
+                        type: integer
+                        example: 1
+                      current_page:
+                        type: integer
+                        example: 1
+                      limit:
+                        type: integer
+                        example: 10
+      tags:
+        - 'Board management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: qui
+                limit:
+                  type: integer
+                  description: ''
+                  example: 1
+                page:
+                  type: integer
+                  description: ''
+                  example: 20
+    post:
+      summary: 'Store a newly created board in storage.'
+      operationId: storeANewlyCreatedBoardInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    name: 'Project 1'
+                    description: 'Our first project'
+                    updated_at: '2023-02-05T12:10:08.000000Z'
+                    created_at: '2023-02-05T12:10:08.000000Z'
+                    id: 3
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'Project 1'
+                      description:
+                        type: string
+                        example: 'Our first project'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T12:10:08.000000Z'
+                      created_at:
+                        type: string
+                        example: '2023-02-05T12:10:08.000000Z'
+                      id:
+                        type: integer
+                        example: 3
+      tags:
+        - 'Board management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: alias
+                description:
+                  type: string
+                  description: ''
+                  example: 'Temporibus sint autem qui expedita.'
+              required:
+                - name
+  '/api/boards/{id}':
+    get:
+      summary: 'Display the specified board.'
+      operationId: displayTheSpecifiedBoard
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new board'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 3
+                    name: 'Project 1'
+                    description: 'Our first project'
+                    created_at: '2023-02-05T12:10:08.000000Z'
+                    updated_at: '2023-02-05T12:10:08.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                      name:
+                        type: string
+                        example: 'Project 1'
+                      description:
+                        type: string
+                        example: 'Our first project'
+                      created_at:
+                        type: string
+                        example: '2023-02-05T12:10:08.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T12:10:08.000000Z'
+      tags:
+        - 'Board management'
+    put:
+      summary: 'Update the specified board in storage.'
+      operationId: updateTheSpecifiedBoardInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user updates a board'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 3
+                    name: 'Project 1'
+                    description: 'Our first project'
+                    created_at: '2023-02-05T12:10:08.000000Z'
+                    updated_at: '2023-02-05T12:10:08.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                      name:
+                        type: string
+                        example: 'Project 1'
+                      description:
+                        type: string
+                        example: 'Our first project'
+                      created_at:
+                        type: string
+                        example: '2023-02-05T12:10:08.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T12:10:08.000000Z'
+      tags:
+        - 'Board management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: omnis
+                description:
+                  type: string
+                  description: ''
+                  example: 'Reprehenderit qui corporis reprehenderit.'
+              required:
+                - name
+    delete:
+      summary: 'Remove the specified board from storage.'
+      operationId: removeTheSpecifiedBoardFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user deletes a board'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data: true
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: boolean
+                    example: true
+      tags:
+        - 'Board management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/upload:
+    post:
+      summary: 'Upload a file'
+      operationId: uploadAFile
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user upload an image'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  filename: yTgprU7rnUJeWb0DwgnNB7OlW3EZQBKZuiVAZzbc.jpg
+                properties:
+                  filename:
+                    type: string
+                    example: yTgprU7rnUJeWb0DwgnNB7OlW3EZQBKZuiVAZzbc.jpg
+      tags:
+        - General
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: 'Must not be greater than 10240 characters.'
+                  example: hwypbxfkkhgdcgyfjvqtiprjr
+              required:
+                - file
+  '/api/boards/{board_id}/labels':
+    get:
+      summary: 'Display a listing of the labels.'
+      operationId: displayAListingOfTheLabels
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user browses label'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 5
+                      board_id: 2
+                      name: iOS
+                      created_at: '2023-02-06T07:19:45.000000Z'
+                      updated_at: '2023-02-06T07:19:45.000000Z'
+                    -
+                      id: 4
+                      board_id: 2
+                      name: Android
+                      created_at: '2023-02-06T07:19:37.000000Z'
+                      updated_at: '2023-02-06T07:19:37.000000Z'
+                    -
+                      id: 3
+                      board_id: 2
+                      name: Dashboard
+                      created_at: '2023-02-06T07:19:25.000000Z'
+                      updated_at: '2023-02-06T07:19:25.000000Z'
+                    -
+                      id: 2
+                      board_id: 2
+                      name: Website
+                      created_at: '2023-02-06T07:19:10.000000Z'
+                      updated_at: '2023-02-06T07:19:10.000000Z'
+                    -
+                      id: 1
+                      board_id: 2
+                      name: Api
+                      created_at: '2023-02-06T07:19:00.000000Z'
+                      updated_at: '2023-02-06T07:19:00.000000Z'
+                  pagination:
+                    total_count: 5
+                    total_pages: 1
+                    current_page: 1
+                    limit: 10
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 5
+                        board_id: 2
+                        name: iOS
+                        created_at: '2023-02-06T07:19:45.000000Z'
+                        updated_at: '2023-02-06T07:19:45.000000Z'
+                      -
+                        id: 4
+                        board_id: 2
+                        name: Android
+                        created_at: '2023-02-06T07:19:37.000000Z'
+                        updated_at: '2023-02-06T07:19:37.000000Z'
+                      -
+                        id: 3
+                        board_id: 2
+                        name: Dashboard
+                        created_at: '2023-02-06T07:19:25.000000Z'
+                        updated_at: '2023-02-06T07:19:25.000000Z'
+                      -
+                        id: 2
+                        board_id: 2
+                        name: Website
+                        created_at: '2023-02-06T07:19:10.000000Z'
+                        updated_at: '2023-02-06T07:19:10.000000Z'
+                      -
+                        id: 1
+                        board_id: 2
+                        name: Api
+                        created_at: '2023-02-06T07:19:00.000000Z'
+                        updated_at: '2023-02-06T07:19:00.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 5
+                        board_id:
+                          type: integer
+                          example: 2
+                        name:
+                          type: string
+                          example: iOS
+                        created_at:
+                          type: string
+                          example: '2023-02-06T07:19:45.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-02-06T07:19:45.000000Z'
+                  pagination:
+                    type: object
+                    properties:
+                      total_count:
+                        type: integer
+                        example: 5
+                      total_pages:
+                        type: integer
+                        example: 1
+                      current_page:
+                        type: integer
+                        example: 1
+                      limit:
+                        type: integer
+                        example: 10
+      tags:
+        - 'Label management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: tempore
+                limit:
+                  type: integer
+                  description: ''
+                  example: 4
+                page:
+                  type: integer
+                  description: ''
+                  example: 20
+    post:
+      summary: 'Store a newly created label in storage.'
+      operationId: storeANewlyCreatedLabelInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new label'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    name: iOS
+                    board_id: 2
+                    updated_at: '2023-02-06T07:19:45.000000Z'
+                    created_at: '2023-02-06T07:19:45.000000Z'
+                    id: 5
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: iOS
+                      board_id:
+                        type: integer
+                        example: 2
+                      updated_at:
+                        type: string
+                        example: '2023-02-06T07:19:45.000000Z'
+                      created_at:
+                        type: string
+                        example: '2023-02-06T07:19:45.000000Z'
+                      id:
+                        type: integer
+                        example: 5
+      tags:
+        - 'Label management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: alias
+              required:
+                - name
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/labels/{id}':
+    get:
+      summary: 'Display the specified label.'
+      operationId: displayTheSpecifiedLabel
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user shows label'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 6
+                    board_id: 2
+                    name: Tesst
+                    created_at: '2023-02-06T07:38:39.000000Z'
+                    updated_at: '2023-02-06T07:41:43.000000Z'
+                    board:
+                      id: 2
+                      user_id: 1
+                      name: 'Project 2'
+                      description: 'Our first project'
+                      created_at: '2023-02-05T12:08:58.000000Z'
+                      updated_at: '2023-02-05T14:11:34.000000Z'
+                      owner:
+                        id: 1
+                        role_id: 1
+                        name: Dima
+                        active: 1
+                        email: dimaaljammal9410@gmail.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T12:08:36.000000Z'
+                        updated_at: '2023-02-05T12:08:36.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 6
+                      board_id:
+                        type: integer
+                        example: 2
+                      name:
+                        type: string
+                        example: Tesst
+                      created_at:
+                        type: string
+                        example: '2023-02-06T07:38:39.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-06T07:41:43.000000Z'
+                      board:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2
+                          user_id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Project 2'
+                          description:
+                            type: string
+                            example: 'Our first project'
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:08:58.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T14:11:34.000000Z'
+                          owner:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              role_id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: Dima
+                              active:
+                                type: integer
+                                example: 1
+                              email:
+                                type: string
+                                example: dimaaljammal9410@gmail.com
+                              email_verified_at:
+                                type: string
+                                example: null
+                              created_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+                              updated_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+      tags:
+        - 'Label management'
+    put:
+      summary: 'Update the specified label in storage.'
+      operationId: updateTheSpecifiedLabelInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user updates a status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 5
+                    board_id: 2
+                    name: iOS
+                    created_at: '2023-02-06T07:19:45.000000Z'
+                    updated_at: '2023-02-06T07:19:45.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 5
+                      board_id:
+                        type: integer
+                        example: 2
+                      name:
+                        type: string
+                        example: iOS
+                      created_at:
+                        type: string
+                        example: '2023-02-06T07:19:45.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-06T07:19:45.000000Z'
+      tags:
+        - 'Label management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: soluta
+              required:
+                - name
+    delete:
+      summary: 'Remove the specified label from storage.'
+      operationId: removeTheSpecifiedLabelFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user deletes a label'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data: true
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: boolean
+                    example: true
+      tags:
+        - 'Label management'
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: id
+        description: 'The ID of the label.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/permissions:
+    get:
+      summary: 'Display a listing of the permissions.'
+      operationId: displayAListingOfThePermissions
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        200:
+          description: 'unauthenticated user retrieve permissions'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: create_user
+                    display_name: 'Create user'
+                  -
+                    id: 2
+                    name: update_user
+                    display_name: 'Update user'
+                  -
+                    id: 3
+                    name: delete_user
+                    display_name: 'Delete user'
+                  -
+                    id: 4
+                    name: browse_user
+                    display_name: 'Browse users'
+                  -
+                    id: 5
+                    name: browse_role
+                    display_name: 'Browse roles'
+                  -
+                    id: 6
+                    name: create_role
+                    display_name: 'Create role'
+                  -
+                    id: 7
+                    name: update_role
+                    display_name: 'Update role'
+                  -
+                    id: 8
+                    name: delete_role
+                    display_name: 'Delete role'
+                  -
+                    id: 9
+                    name: browse_permission
+                    display_name: 'Browse permissions'
+                  -
+                    id: 10
+                    name: create_permission
+                    display_name: 'Create permissions'
+                  -
+                    id: 11
+                    name: update_permission
+                    display_name: 'Update permission'
+                  -
+                    id: 12
+                    name: delete_permission
+                    display_name: 'Delete permission'
+                  -
+                    id: 13
+                    name: browse_board
+                    display_name: 'Browse boards'
+                  -
+                    id: 14
+                    name: create_board
+                    display_name: 'Create board'
+                  -
+                    id: 15
+                    name: update_board
+                    display_name: 'Update board'
+                  -
+                    id: 16
+                    name: delete_board
+                    display_name: 'Delete board'
+                  -
+                    id: 17
+                    name: browse_status
+                    display_name: 'Browse statuses'
+                  -
+                    id: 18
+                    name: create_status
+                    display_name: 'Create statuses'
+                  -
+                    id: 19
+                    name: update_status
+                    display_name: 'Update status'
+                  -
+                    id: 20
+                    name: delete_status
+                    display_name: 'Delete status'
+                  -
+                    id: 21
+                    name: browse_label
+                    display_name: 'Browse labels'
+                  -
+                    id: 22
+                    name: create_label
+                    display_name: 'Create label'
+                  -
+                    id: 23
+                    name: update_label
+                    display_name: 'Update label'
+                  -
+                    id: 24
+                    name: delete_label
+                    display_name: 'Delete label'
+                  -
+                    id: 25
+                    name: browse_task
+                    display_name: 'Browse tasks'
+                  -
+                    id: 26
+                    name: create_task
+                    display_name: 'Create task'
+                  -
+                    id: 27
+                    name: update_task
+                    display_name: 'Update task'
+                  -
+                    id: 28
+                    name: delete_task
+                    display_name: 'Delete task'
+      tags:
+        - 'Permission management'
+    post:
+      summary: 'Store a newly created permission in storage.'
+      operationId: storeANewlyCreatedPermissionInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        200:
+          description: 'unauthenticated user creates new permission'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    name: test
+                    display_name: "Change task's status from any status to another"
+                    entity_name: tasks
+                    id: 45
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: test
+                      display_name:
+                        type: string
+                        example: "Change task's status from any status to another"
+                      entity_name:
+                        type: string
+                        example: tasks
+                      id:
+                        type: integer
+                        example: 45
+      tags:
+        - 'Permission management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: iusto
+                display_name:
+                  type: string
+                  description: ''
+                  example: ipsum
+                entity_name:
+                  type: string
+                  description: ''
+                  example: voluptas
+              required:
+                - name
+                - display_name
+                - entity_name
+  '/api/permissions/{id}':
+    get:
+      summary: 'Display the specified permission.'
+      operationId: displayTheSpecifiedPermission
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Permission management'
+    put:
+      summary: 'Update the specified permission in storage.'
+      operationId: updateTheSpecifiedPermissionInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Permission management'
+    delete:
+      summary: 'Remove the specified permission from storage.'
+      operationId: removeTheSpecifiedPermissionFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Permission management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the permission.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/roles:
+    get:
+      summary: 'Display a listing of roles.'
+      operationId: displayAListingOfRoles
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        200:
+          description: 'unauthenticated user retrieve roles'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    name: product_owner
+                    display_name: 'Product Owner'
+                    created_at: '2023-02-04T09:09:56.000000Z'
+                    updated_at: '2023-02-04T09:09:56.000000Z'
+                  -
+                    id: 2
+                    name: developer
+                    display_name: Developer
+                    created_at: '2023-02-04T09:11:23.000000Z'
+                    updated_at: '2023-02-04T09:11:23.000000Z'
+                  -
+                    id: 3
+                    name: tester
+                    display_name: Tester
+                    created_at: '2023-02-04T09:11:54.000000Z'
+                    updated_at: '2023-02-04T09:11:54.000000Z'
+      tags:
+        - 'Role management'
+    post:
+      summary: 'Store a newly created role in storage.'
+      operationId: storeANewlyCreatedRoleInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        200:
+          description: 'unauthenticated user create new role'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    name: admin
+                    display_name: Admin
+                    id: 1
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: admin
+                      display_name:
+                        type: string
+                        example: Admin
+                      id:
+                        type: integer
+                        example: 1
+      tags:
+        - 'Role management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: qui
+                display_name:
+                  type: string
+                  description: ''
+                  example: voluptatibus
+              required:
+                - name
+                - display_name
+  '/api/roles/{id}':
+    get:
+      summary: 'Display the specified role.'
+      operationId: displayTheSpecifiedRole
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Role management'
+    put:
+      summary: 'Update the specified role in storage.'
+      operationId: updateTheSpecifiedRoleInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        200:
+          description: 'unauthenticated user create new role'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 3
+                    name: tester
+                    display_name: Tester
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                      name:
+                        type: string
+                        example: tester
+                      display_name:
+                        type: string
+                        example: Tester
+      tags:
+        - 'Role management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                display_name:
+                  type: string
+                  description: ''
+                  example: qui
+                permissions:
+                  type: array
+                  description: ''
+                  example:
+                    - []
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: ''
+                        example: aliquid
+                    required:
+                      - id
+    delete:
+      summary: 'Remove the specified role from storage.'
+      operationId: removeTheSpecifiedRoleFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Role management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the role.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/statuses':
+    get:
+      summary: 'Display a listing of the status.'
+      operationId: displayAListingOfTheStatus
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user browses statuses'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 6
+                      board_id: 2
+                      name: close
+                      created_at: '2023-02-06T08:25:26.000000Z'
+                      updated_at: '2023-02-06T08:25:26.000000Z'
+                    -
+                      id: 5
+                      board_id: 2
+                      name: done
+                      created_at: '2023-02-06T08:25:21.000000Z'
+                      updated_at: '2023-02-06T08:25:21.000000Z'
+                    -
+                      id: 4
+                      board_id: 2
+                      name: testing
+                      created_at: '2023-02-06T08:25:06.000000Z'
+                      updated_at: '2023-02-06T08:25:06.000000Z'
+                    -
+                      id: 3
+                      board_id: 2
+                      name: dev-review
+                      created_at: '2023-02-06T08:24:46.000000Z'
+                      updated_at: '2023-02-06T08:24:46.000000Z'
+                    -
+                      id: 2
+                      board_id: 2
+                      name: in-progress
+                      created_at: '2023-02-06T08:24:33.000000Z'
+                      updated_at: '2023-02-06T08:24:33.000000Z'
+                    -
+                      id: 1
+                      board_id: 2
+                      name: to-do
+                      created_at: '2023-02-06T08:23:56.000000Z'
+                      updated_at: '2023-02-06T08:23:56.000000Z'
+                  pagination:
+                    total_count: 6
+                    total_pages: 1
+                    current_page: 1
+                    limit: 10
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 6
+                        board_id: 2
+                        name: close
+                        created_at: '2023-02-06T08:25:26.000000Z'
+                        updated_at: '2023-02-06T08:25:26.000000Z'
+                      -
+                        id: 5
+                        board_id: 2
+                        name: done
+                        created_at: '2023-02-06T08:25:21.000000Z'
+                        updated_at: '2023-02-06T08:25:21.000000Z'
+                      -
+                        id: 4
+                        board_id: 2
+                        name: testing
+                        created_at: '2023-02-06T08:25:06.000000Z'
+                        updated_at: '2023-02-06T08:25:06.000000Z'
+                      -
+                        id: 3
+                        board_id: 2
+                        name: dev-review
+                        created_at: '2023-02-06T08:24:46.000000Z'
+                        updated_at: '2023-02-06T08:24:46.000000Z'
+                      -
+                        id: 2
+                        board_id: 2
+                        name: in-progress
+                        created_at: '2023-02-06T08:24:33.000000Z'
+                        updated_at: '2023-02-06T08:24:33.000000Z'
+                      -
+                        id: 1
+                        board_id: 2
+                        name: to-do
+                        created_at: '2023-02-06T08:23:56.000000Z'
+                        updated_at: '2023-02-06T08:23:56.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 6
+                        board_id:
+                          type: integer
+                          example: 2
+                        name:
+                          type: string
+                          example: close
+                        created_at:
+                          type: string
+                          example: '2023-02-06T08:25:26.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-02-06T08:25:26.000000Z'
+                  pagination:
+                    type: object
+                    properties:
+                      total_count:
+                        type: integer
+                        example: 6
+                      total_pages:
+                        type: integer
+                        example: 1
+                      current_page:
+                        type: integer
+                        example: 1
+                      limit:
+                        type: integer
+                        example: 10
+      tags:
+        - 'status management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: nostrum
+                limit:
+                  type: integer
+                  description: ''
+                  example: 16
+                page:
+                  type: integer
+                  description: ''
+                  example: 1
+    post:
+      summary: 'Store a newly created status in storage.'
+      operationId: storeANewlyCreatedStatusInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    name: to-do
+                    board_id: 2
+                    updated_at: '2023-02-06T08:23:56.000000Z'
+                    created_at: '2023-02-06T08:23:56.000000Z'
+                    id: 1
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: to-do
+                      board_id:
+                        type: integer
+                        example: 2
+                      updated_at:
+                        type: string
+                        example: '2023-02-06T08:23:56.000000Z'
+                      created_at:
+                        type: string
+                        example: '2023-02-06T08:23:56.000000Z'
+                      id:
+                        type: integer
+                        example: 1
+      tags:
+        - 'status management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: quas
+              required:
+                - name
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/statuses/{id}':
+    get:
+      summary: 'Display the specified status.'
+      operationId: displayTheSpecifiedStatus
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user shows status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 7
+                    board_id: 2
+                    name: test2
+                    created_at: '2023-02-06T08:25:32.000000Z'
+                    updated_at: '2023-02-06T08:26:00.000000Z'
+                    board:
+                      id: 2
+                      user_id: 1
+                      name: 'Project 2'
+                      description: 'Our first project'
+                      created_at: '2023-02-05T12:08:58.000000Z'
+                      updated_at: '2023-02-05T14:11:34.000000Z'
+                      owner:
+                        id: 1
+                        role_id: 1
+                        name: Dima
+                        active: 1
+                        email: dimaaljammal9410@gmail.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T12:08:36.000000Z'
+                        updated_at: '2023-02-05T12:08:36.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 7
+                      board_id:
+                        type: integer
+                        example: 2
+                      name:
+                        type: string
+                        example: test2
+                      created_at:
+                        type: string
+                        example: '2023-02-06T08:25:32.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-06T08:26:00.000000Z'
+                      board:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2
+                          user_id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Project 2'
+                          description:
+                            type: string
+                            example: 'Our first project'
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:08:58.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T14:11:34.000000Z'
+                          owner:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              role_id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: Dima
+                              active:
+                                type: integer
+                                example: 1
+                              email:
+                                type: string
+                                example: dimaaljammal9410@gmail.com
+                              email_verified_at:
+                                type: string
+                                example: null
+                              created_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+                              updated_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+      tags:
+        - 'status management'
+    put:
+      summary: 'Update the specified status in storage.'
+      operationId: updateTheSpecifiedStatusInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user updates a status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 7
+                    board_id: 2
+                    name: test2
+                    created_at: '2023-02-06T08:25:32.000000Z'
+                    updated_at: '2023-02-06T08:26:00.000000Z'
+                    board:
+                      id: 2
+                      user_id: 1
+                      name: 'Project 2'
+                      description: 'Our first project'
+                      created_at: '2023-02-05T12:08:58.000000Z'
+                      updated_at: '2023-02-05T14:11:34.000000Z'
+                      owner:
+                        id: 1
+                        role_id: 1
+                        name: Dima
+                        active: 1
+                        email: dimaaljammal9410@gmail.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T12:08:36.000000Z'
+                        updated_at: '2023-02-05T12:08:36.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 7
+                      board_id:
+                        type: integer
+                        example: 2
+                      name:
+                        type: string
+                        example: test2
+                      created_at:
+                        type: string
+                        example: '2023-02-06T08:25:32.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-06T08:26:00.000000Z'
+                      board:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2
+                          user_id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Project 2'
+                          description:
+                            type: string
+                            example: 'Our first project'
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:08:58.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T14:11:34.000000Z'
+                          owner:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              role_id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: Dima
+                              active:
+                                type: integer
+                                example: 1
+                              email:
+                                type: string
+                                example: dimaaljammal9410@gmail.com
+                              email_verified_at:
+                                type: string
+                                example: null
+                              created_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+                              updated_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+      tags:
+        - 'status management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: quibusdam
+              required:
+                - name
+    delete:
+      summary: 'Remove the specified status from storage.'
+      operationId: removeTheSpecifiedStatusFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user deletes a status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data: true
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: boolean
+                    example: true
+      tags:
+        - 'status management'
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: id
+        description: 'The ID of the status.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/users:
+    get:
+      summary: 'Display a listing of the users.'
+      operationId: displayAListingOfTheUsers
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 3
+                      role_id: 2
+                      name: Developer
+                      active: 1
+                      email: developer@example.com
+                      email_verified_at: null
+                      created_at: '2023-02-05T09:45:18.000000Z'
+                      updated_at: '2023-02-05T09:45:18.000000Z'
+                    -
+                      id: 2
+                      role_id: 5
+                      name: 'Product owner'
+                      active: 1
+                      email: product_ower@example.com
+                      email_verified_at: null
+                      created_at: '2023-02-05T09:44:02.000000Z'
+                      updated_at: '2023-02-05T09:44:02.000000Z'
+                  pagination:
+                    total_count: 4
+                    total_pages: 2
+                    current_page: 2
+                    limit: 2
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 3
+                        role_id: 2
+                        name: Developer
+                        active: 1
+                        email: developer@example.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T09:45:18.000000Z'
+                        updated_at: '2023-02-05T09:45:18.000000Z'
+                      -
+                        id: 2
+                        role_id: 5
+                        name: 'Product owner'
+                        active: 1
+                        email: product_ower@example.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T09:44:02.000000Z'
+                        updated_at: '2023-02-05T09:44:02.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 3
+                        role_id:
+                          type: integer
+                          example: 2
+                        name:
+                          type: string
+                          example: Developer
+                        active:
+                          type: integer
+                          example: 1
+                        email:
+                          type: string
+                          example: developer@example.com
+                        email_verified_at:
+                          type: string
+                          example: null
+                        created_at:
+                          type: string
+                          example: '2023-02-05T09:45:18.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-02-05T09:45:18.000000Z'
+                  pagination:
+                    type: object
+                    properties:
+                      total_count:
+                        type: integer
+                        example: 4
+                      total_pages:
+                        type: integer
+                        example: 2
+                      current_page:
+                        type: integer
+                        example: 2
+                      limit:
+                        type: integer
+                        example: 2
+      tags:
+        - 'user management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: minus
+                email:
+                  type: string
+                  description: ''
+                  example: hdouglas@example.org
+                role_id:
+                  type: integer
+                  description: ''
+                  example: 5
+                limit:
+                  type: integer
+                  description: ''
+                  example: 20
+                page:
+                  type: integer
+                  description: ''
+                  example: 15
+    post:
+      summary: 'Store a newly created user in storage.'
+      operationId: storeANewlyCreatedUserInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user browses users'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    name: 'Product owner'
+                    email: product_ower@example.com
+                    role_id: '5'
+                    updated_at: '2023-02-05T09:44:02.000000Z'
+                    created_at: '2023-02-05T09:44:02.000000Z'
+                    id: 2
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'Product owner'
+                      email:
+                        type: string
+                        example: product_ower@example.com
+                      role_id:
+                        type: string
+                        example: '5'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T09:44:02.000000Z'
+                      created_at:
+                        type: string
+                        example: '2023-02-05T09:44:02.000000Z'
+                      id:
+                        type: integer
+                        example: 2
+      tags:
+        - 'user management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: quia
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: thea68@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: '=N_^.VL'
+                role_id:
+                  type: integer
+                  description: ''
+                  example: 11
+              required:
+                - name
+                - email
+                - password
+                - role_id
+  '/api/users/{id}':
+    get:
+      summary: 'Display the specified user.'
+      operationId: displayTheSpecifiedUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user shows status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 4
+                    role_id: 3
+                    name: Tester
+                    active: 1
+                    email: tester@example.com
+                    email_verified_at: null
+                    created_at: '2023-02-05T09:45:37.000000Z'
+                    updated_at: '2023-02-05T09:45:37.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 4
+                      role_id:
+                        type: integer
+                        example: 3
+                      name:
+                        type: string
+                        example: Tester
+                      active:
+                        type: integer
+                        example: 1
+                      email:
+                        type: string
+                        example: tester@example.com
+                      email_verified_at:
+                        type: string
+                        example: null
+                      created_at:
+                        type: string
+                        example: '2023-02-05T09:45:37.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T09:45:37.000000Z'
+      tags:
+        - 'user management'
+    put:
+      summary: 'Update the specified user in storage.'
+      operationId: updateTheSpecifiedUserInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user updates a user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 5
+                    role_id: 3
+                    name: 'Tester 2'
+                    active: 1
+                    email: tester2@example.com
+                    email_verified_at: null
+                    created_at: '2023-02-05T11:02:34.000000Z'
+                    updated_at: '2023-02-05T11:15:50.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 5
+                      role_id:
+                        type: integer
+                        example: 3
+                      name:
+                        type: string
+                        example: 'Tester 2'
+                      active:
+                        type: integer
+                        example: 1
+                      email:
+                        type: string
+                        example: tester2@example.com
+                      email_verified_at:
+                        type: string
+                        example: null
+                      created_at:
+                        type: string
+                        example: '2023-02-05T11:02:34.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-05T11:15:50.000000Z'
+      tags:
+        - 'user management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: culpa
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: jroberts@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: '+b8HA:DehSE'
+                role_id:
+                  type: integer
+                  description: ''
+                  example: 7
+                is_active:
+                  type: boolean
+                  description: ''
+                  example: false
+    delete:
+      summary: 'Remove the specified user from storage.'
+      operationId: removeTheSpecifiedUserFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user deletes a user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data: true
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: boolean
+                    example: true
+      tags:
+        - 'user management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: 'Board management'
+    description: ''
+  -
+    name: General
+    description: 'you can access it using {{baseUrl}}/storage/images/{filename}'
+  -
+    name: 'Label management'
+    description: ''
+  -
+    name: 'Permission management'
+    description: ''
+  -
+    name: 'Role management'
+    description: ''
+  -
+    name: 'status management'
+    description: ''
+  -
+    name: 'user management'
+    description: ''
