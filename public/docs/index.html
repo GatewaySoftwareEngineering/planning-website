@@ -101,6 +101,31 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-PUTapi-boards--board_id--tasks--task_id--assign">
+                                <a href="#endpoints-PUTapi-boards--board_id--tasks--task_id--assign">Assign task to user.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-boards--board_id--tasks--task_id--move">
+                                <a href="#endpoints-PUTapi-boards--board_id--tasks--task_id--move">move a task to another status.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-boards--board_id--tasks">
+                                <a href="#endpoints-POSTapi-boards--board_id--tasks">Store a newly created task in storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-boards--board_id--tasks--id-">
+                                <a href="#endpoints-GETapi-boards--board_id--tasks--id-">View task with log.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-boards--board_id--tasks--id-">
+                                <a href="#endpoints-PUTapi-boards--board_id--tasks--id-">Update the specified resource in storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-boards--board_id--tasks--id-">
+                                <a href="#endpoints-DELETEapi-boards--board_id--tasks--id-">Remove the specified resource from storage.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-general" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="general">
                     <a href="#general">General</a>
@@ -230,7 +255,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 6, 2023</li>
+        <li>Last updated: February 8, 2023</li>
     </ul>
 </div>
 
@@ -269,8 +294,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"zthompson@example.net\",
-    \"password\": \"?iqmKOA,z9VDiM2X;ZX\'\"
+    \"email\": \"tkessler@example.net\",
+    \"password\": \"eI=AdvAn8a@&lt;&lt;\"
 }"
 </code></pre></div>
 
@@ -286,8 +311,8 @@ const headers = {
 };
 
 let body = {
-    "email": "zthompson@example.net",
-    "password": "?iqmKOA,z9VDiM2X;ZX'"
+    "email": "tkessler@example.net",
+    "password": "eI=AdvAn8a@&lt;&lt;"
 };
 
 fetch(url, {
@@ -395,10 +420,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-login"
-               value="zthompson@example.net"
+               value="tkessler@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>zthompson@example.net</code></p>
+<p>Must be a valid email address. Example: <code>tkessler@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -406,10 +431,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-auth-login"
-               value="?iqmKOA,z9VDiM2X;ZX'"
+               value="eI=AdvAn8a@<<"
                data-component="body">
     <br>
-<p>Example: <code>?iqmKOA,z9VDiM2X;ZX'</code></p>
+<p>Example: <code>eI=AdvAn8a@&lt;&lt;</code></p>
         </div>
         </form>
 
@@ -435,7 +460,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"user_id\": \"odit\"
+    \"user_id\": \"maiores\"
 }"
 </code></pre></div>
 
@@ -451,7 +476,7 @@ const headers = {
 };
 
 let body = {
-    "user_id": "odit"
+    "user_id": "maiores"
 };
 
 fetch(url, {
@@ -589,10 +614,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="user_id"                data-endpoint="PUTapi-boards--board_id--invite"
-               value="odit"
+               value="maiores"
                data-component="body">
     <br>
-<p>Example: <code>odit</code></p>
+<p>Example: <code>maiores</code></p>
         </div>
         </form>
 
@@ -614,9 +639,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"qui\",
-    \"limit\": 1,
-    \"page\": 20
+    \"name\": \"commodi\",
+    \"limit\": 14,
+    \"page\": 17
 }"
 </code></pre></div>
 
@@ -632,9 +657,9 @@ const headers = {
 };
 
 let body = {
-    "name": "qui",
-    "limit": 1,
-    "page": 20
+    "name": "commodi",
+    "limit": 14,
+    "page": 17
 };
 
 fetch(url, {
@@ -773,10 +798,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="GETapi-boards"
-               value="qui"
+               value="commodi"
                data-component="body">
     <br>
-<p>Example: <code>qui</code></p>
+<p>Example: <code>commodi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
@@ -784,10 +809,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="limit"                data-endpoint="GETapi-boards"
-               value="1"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -795,10 +820,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="page"                data-endpoint="GETapi-boards"
-               value="20"
+               value="17"
                data-component="body">
     <br>
-<p>Example: <code>20</code></p>
+<p>Example: <code>17</code></p>
         </div>
         </form>
 
@@ -820,8 +845,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"alias\",
-    \"description\": \"Temporibus sint autem qui expedita.\"
+    \"name\": \"quidem\",
+    \"description\": \"Debitis beatae atque consectetur omnis.\"
 }"
 </code></pre></div>
 
@@ -837,8 +862,8 @@ const headers = {
 };
 
 let body = {
-    "name": "alias",
-    "description": "Temporibus sint autem qui expedita."
+    "name": "quidem",
+    "description": "Debitis beatae atque consectetur omnis."
 };
 
 fetch(url, {
@@ -967,10 +992,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-boards"
-               value="alias"
+               value="quidem"
                data-component="body">
     <br>
-<p>Example: <code>alias</code></p>
+<p>Example: <code>quidem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -978,10 +1003,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="description"                data-endpoint="POSTapi-boards"
-               value="Temporibus sint autem qui expedita."
+               value="Debitis beatae atque consectetur omnis."
                data-component="body">
     <br>
-<p>Example: <code>Temporibus sint autem qui expedita.</code></p>
+<p>Example: <code>Debitis beatae atque consectetur omnis.</code></p>
         </div>
         </form>
 
@@ -1150,8 +1175,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"omnis\",
-    \"description\": \"Reprehenderit qui corporis reprehenderit.\"
+    \"name\": \"doloribus\",
+    \"description\": \"Est consectetur recusandae hic omnis quasi nisi.\"
 }"
 </code></pre></div>
 
@@ -1167,8 +1192,8 @@ const headers = {
 };
 
 let body = {
-    "name": "omnis",
-    "description": "Reprehenderit qui corporis reprehenderit."
+    "name": "doloribus",
+    "description": "Est consectetur recusandae hic omnis quasi nisi."
 };
 
 fetch(url, {
@@ -1313,10 +1338,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="PUTapi-boards--id-"
-               value="omnis"
+               value="doloribus"
                data-component="body">
     <br>
-<p>Example: <code>omnis</code></p>
+<p>Example: <code>doloribus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -1324,10 +1349,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="description"                data-endpoint="PUTapi-boards--id-"
-               value="Reprehenderit qui corporis reprehenderit."
+               value="Est consectetur recusandae hic omnis quasi nisi."
                data-component="body">
     <br>
-<p>Example: <code>Reprehenderit qui corporis reprehenderit.</code></p>
+<p>Example: <code>Est consectetur recusandae hic omnis quasi nisi.</code></p>
         </div>
         </form>
 
@@ -1472,6 +1497,1191 @@ fetch(url, {
             </div>
                     </form>
 
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-PUTapi-boards--board_id--tasks--task_id--assign">Assign task to user.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-boards--board_id--tasks--task_id--assign">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://127.0.0.1:8015/api/boards/2/tasks/2/assign" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": \"sequi\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8015/api/boards/2/tasks/2/assign"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "sequi"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-boards--board_id--tasks--task_id--assign">
+            <blockquote>
+            <p>Example response (401, unauthenticated user):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Invalid inputs):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The email must be a valid email address.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;The email must be a valid email address.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, unauthenticated user assigns a task to user):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;board_id&quot;: 4,
+        &quot;status_id&quot;: 2,
+        &quot;assignee_id&quot;: 11,
+        &quot;title&quot;: &quot;Test task&quot;,
+        &quot;description&quot;: &quot;test&quot;,
+        &quot;image&quot;: null,
+        &quot;due_date&quot;: &quot;2023-05-01&quot;,
+        &quot;created_at&quot;: &quot;2023-02-07T17:18:17.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2023-02-08T09:06:41.000000Z&quot;,
+        &quot;board&quot;: {
+            &quot;id&quot;: 4,
+            &quot;user_id&quot;: 2,
+            &quot;name&quot;: &quot;Project 1&quot;,
+            &quot;description&quot;: &quot;First project&quot;,
+            &quot;created_at&quot;: &quot;2023-02-05T12:58:21.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-02-05T12:58:21.000000Z&quot;,
+            &quot;owner&quot;: {
+                &quot;id&quot;: 2,
+                &quot;role_id&quot;: 5,
+                &quot;name&quot;: &quot;Product owner&quot;,
+                &quot;active&quot;: 1,
+                &quot;email&quot;: &quot;product_ower@example.com&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;created_at&quot;: &quot;2023-02-05T09:44:02.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2023-02-05T09:44:02.000000Z&quot;
+            }
+        },
+        &quot;assignee&quot;: {
+            &quot;id&quot;: 9,
+            &quot;board_id&quot;: 2,
+            &quot;user_id&quot;: 3,
+            &quot;created_at&quot;: &quot;2023-02-06T07:14:45.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-02-06T07:14:45.000000Z&quot;,
+            &quot;laravel_through_key&quot;: 3
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-boards--board_id--tasks--task_id--assign" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-boards--board_id--tasks--task_id--assign"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-boards--board_id--tasks--task_id--assign" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-boards--board_id--tasks--task_id--assign" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-boards--board_id--tasks--task_id--assign"></code></pre>
+</span>
+<form id="form-PUTapi-boards--board_id--tasks--task_id--assign" data-method="PUT"
+      data-path="api/boards/{board_id}/tasks/{task_id}/assign"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-boards--board_id--tasks--task_id--assign', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-boards--board_id--tasks--task_id--assign"
+                    onclick="tryItOut('PUTapi-boards--board_id--tasks--task_id--assign');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-boards--board_id--tasks--task_id--assign"
+                    onclick="cancelTryOut('PUTapi-boards--board_id--tasks--task_id--assign');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-boards--board_id--tasks--task_id--assign" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/boards/{board_id}/tasks/{task_id}/assign</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--assign"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--assign"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>board_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="board_id"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--assign"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the board. Example: <code>2</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="task_id"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--assign"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>2</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="user_id"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--assign"
+               value="sequi"
+               data-component="body">
+    <br>
+<p>Example: <code>sequi</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-PUTapi-boards--board_id--tasks--task_id--move">move a task to another status.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-boards--board_id--tasks--task_id--move">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://127.0.0.1:8015/api/boards/2/tasks/2/move" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"status_id\": \"tenetur\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8015/api/boards/2/tasks/2/move"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "status_id": "tenetur"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-boards--board_id--tasks--task_id--move">
+            <blockquote>
+            <p>Example response (401, unauthenticated user):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Invalid inputs):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The email must be a valid email address.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;The email must be a valid email address.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, unauthenticated user moves a task to another status):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 2,
+        &quot;board_id&quot;: 2,
+        &quot;status_id&quot;: 2,
+        &quot;assignee_id&quot;: null,
+        &quot;title&quot;: &quot;Test task&quot;,
+        &quot;description&quot;: &quot;test&quot;,
+        &quot;image&quot;: null,
+        &quot;due_date&quot;: &quot;2023-05-01&quot;,
+        &quot;created_at&quot;: &quot;2023-02-07T17:17:48.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2023-02-08T06:54:33.000000Z&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-boards--board_id--tasks--task_id--move" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-boards--board_id--tasks--task_id--move"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-boards--board_id--tasks--task_id--move" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-boards--board_id--tasks--task_id--move" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-boards--board_id--tasks--task_id--move"></code></pre>
+</span>
+<form id="form-PUTapi-boards--board_id--tasks--task_id--move" data-method="PUT"
+      data-path="api/boards/{board_id}/tasks/{task_id}/move"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-boards--board_id--tasks--task_id--move', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-boards--board_id--tasks--task_id--move"
+                    onclick="tryItOut('PUTapi-boards--board_id--tasks--task_id--move');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-boards--board_id--tasks--task_id--move"
+                    onclick="cancelTryOut('PUTapi-boards--board_id--tasks--task_id--move');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-boards--board_id--tasks--task_id--move" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/boards/{board_id}/tasks/{task_id}/move</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--move"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--move"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>board_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="board_id"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--move"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the board. Example: <code>2</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>task_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="task_id"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--move"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>2</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="status_id"                data-endpoint="PUTapi-boards--board_id--tasks--task_id--move"
+               value="tenetur"
+               data-component="body">
+    <br>
+<p>Example: <code>tenetur</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-boards--board_id--tasks">Store a newly created task in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-boards--board_id--tasks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8015/api/boards/2/tasks" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"title\": \"quidem\",
+    \"description\": \"Est porro omnis vitae non deserunt occaecati dolor.\",
+    \"image\": \"blanditiis\",
+    \"due_date\": \"2023-02-08T11:18:39\",
+    \"0\": \"2107-03-31\",
+    \"labels\": [
+        {
+            \"id\": \"rerum\"
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8015/api/boards/2/tasks"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "title": "quidem",
+    "description": "Est porro omnis vitae non deserunt occaecati dolor.",
+    "image": "blanditiis",
+    "due_date": "2023-02-08T11:18:39",
+    "0": "2107-03-31",
+    "labels": [
+        {
+            "id": "rerum"
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-boards--board_id--tasks">
+            <blockquote>
+            <p>Example response (401, unauthenticated user):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Invalid inputs):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The email must be a valid email address.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;The email must be a valid email address.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, unauthenticated user creates new task):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;title&quot;: &quot;Test task&quot;,
+        &quot;description&quot;: &quot;test&quot;,
+        &quot;image&quot;: null,
+        &quot;due_date&quot;: &quot;2023-05-01&quot;,
+        &quot;status_id&quot;: 1,
+        &quot;board_id&quot;: 2,
+        &quot;updated_at&quot;: &quot;2023-02-07T17:22:23.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2023-02-07T17:22:23.000000Z&quot;,
+        &quot;id&quot;: 5,
+        &quot;board&quot;: {
+            &quot;id&quot;: 2,
+            &quot;user_id&quot;: 1,
+            &quot;name&quot;: &quot;Project 1&quot;,
+            &quot;description&quot;: &quot;First project&quot;,
+            &quot;created_at&quot;: &quot;2023-02-05T12:08:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-02-05T14:11:34.000000Z&quot;,
+            &quot;owner&quot;: {
+                &quot;id&quot;: 1,
+                &quot;role_id&quot;: 1,
+                &quot;name&quot;: &quot;Dima&quot;,
+                &quot;active&quot;: 1,
+                &quot;email&quot;: &quot;dimaaljammal9410@gmail.com&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;created_at&quot;: &quot;2023-02-05T12:08:36.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2023-02-05T12:08:36.000000Z&quot;
+            }
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-boards--board_id--tasks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-boards--board_id--tasks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-boards--board_id--tasks" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-boards--board_id--tasks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-boards--board_id--tasks"></code></pre>
+</span>
+<form id="form-POSTapi-boards--board_id--tasks" data-method="POST"
+      data-path="api/boards/{board_id}/tasks"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-boards--board_id--tasks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-boards--board_id--tasks"
+                    onclick="tryItOut('POSTapi-boards--board_id--tasks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-boards--board_id--tasks"
+                    onclick="cancelTryOut('POSTapi-boards--board_id--tasks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-boards--board_id--tasks" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/boards/{board_id}/tasks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>board_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="board_id"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the board. Example: <code>2</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="status_id"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value=""
+               data-component="body">
+    <br>
+
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>assignee_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="assignee_id"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value=""
+               data-component="body">
+    <br>
+
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="title"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="quidem"
+               data-component="body">
+    <br>
+<p>Example: <code>quidem</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="description"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="Est porro omnis vitae non deserunt occaecati dolor."
+               data-component="body">
+    <br>
+<p>Example: <code>Est porro omnis vitae non deserunt occaecati dolor.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="image"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="blanditiis"
+               data-component="body">
+    <br>
+<p>Example: <code>blanditiis</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>due_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="due_date"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="2023-02-08T11:18:39"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2023-02-08T11:18:39</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>0</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="0"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="2107-03-31"
+               data-component="body">
+    <br>
+<p>Must be a date after or equal to <code>today</code>. Example: <code>2107-03-31</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>labels</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="labels.0.id"                data-endpoint="POSTapi-boards--board_id--tasks"
+               value="rerum"
+               data-component="body">
+    <br>
+<p>Example: <code>rerum</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-boards--board_id--tasks--id-">View task with log.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-boards--board_id--tasks--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8015/api/boards/2/tasks/2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8015/api/boards/2/tasks/2"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-boards--board_id--tasks--id-">
+            <blockquote>
+            <p>Example response (401, unauthenticated user):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422, Invalid inputs):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The email must be a valid email address.&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;The email must be a valid email address.&quot;
+        ]
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403, Forbidden):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, unauthenticated user assigns a task to user):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 3,
+        &quot;board_id&quot;: 4,
+        &quot;status_id&quot;: 2,
+        &quot;assignee_id&quot;: 11,
+        &quot;title&quot;: &quot;Test task&quot;,
+        &quot;description&quot;: &quot;test&quot;,
+        &quot;image&quot;: null,
+        &quot;due_date&quot;: &quot;2023-05-01&quot;,
+        &quot;created_at&quot;: &quot;2023-02-07T17:18:17.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2023-02-08T09:06:41.000000Z&quot;,
+        &quot;board&quot;: {
+            &quot;id&quot;: 4,
+            &quot;user_id&quot;: 2,
+            &quot;name&quot;: &quot;Project 1&quot;,
+            &quot;description&quot;: &quot;First project&quot;,
+            &quot;created_at&quot;: &quot;2023-02-05T12:58:21.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-02-05T12:58:21.000000Z&quot;,
+            &quot;owner&quot;: {
+                &quot;id&quot;: 2,
+                &quot;role_id&quot;: 5,
+                &quot;name&quot;: &quot;Product owner&quot;,
+                &quot;active&quot;: 1,
+                &quot;email&quot;: &quot;product_ower@example.com&quot;,
+                &quot;email_verified_at&quot;: null,
+                &quot;created_at&quot;: &quot;2023-02-05T09:44:02.000000Z&quot;,
+                &quot;updated_at&quot;: &quot;2023-02-05T09:44:02.000000Z&quot;
+            }
+        },
+        &quot;assignee&quot;: {
+            &quot;id&quot;: 9,
+            &quot;board_id&quot;: 2,
+            &quot;user_id&quot;: 3,
+            &quot;created_at&quot;: &quot;2023-02-06T07:14:45.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-02-06T07:14:45.000000Z&quot;,
+            &quot;laravel_through_key&quot;: 3
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-boards--board_id--tasks--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-boards--board_id--tasks--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-boards--board_id--tasks--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-boards--board_id--tasks--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-boards--board_id--tasks--id-"></code></pre>
+</span>
+<form id="form-GETapi-boards--board_id--tasks--id-" data-method="GET"
+      data-path="api/boards/{board_id}/tasks/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-boards--board_id--tasks--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-boards--board_id--tasks--id-"
+                    onclick="tryItOut('GETapi-boards--board_id--tasks--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-boards--board_id--tasks--id-"
+                    onclick="cancelTryOut('GETapi-boards--board_id--tasks--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-boards--board_id--tasks--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/boards/{board_id}/tasks/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-boards--board_id--tasks--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-boards--board_id--tasks--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>board_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="board_id"                data-endpoint="GETapi-boards--board_id--tasks--id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the board. Example: <code>2</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="GETapi-boards--board_id--tasks--id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>2</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-boards--board_id--tasks--id-">Update the specified resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-boards--board_id--tasks--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://127.0.0.1:8015/api/boards/2/tasks/2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8015/api/boards/2/tasks/2"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-boards--board_id--tasks--id-">
+</span>
+<span id="execution-results-PUTapi-boards--board_id--tasks--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-boards--board_id--tasks--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-boards--board_id--tasks--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-boards--board_id--tasks--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-boards--board_id--tasks--id-"></code></pre>
+</span>
+<form id="form-PUTapi-boards--board_id--tasks--id-" data-method="PUT"
+      data-path="api/boards/{board_id}/tasks/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-boards--board_id--tasks--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-boards--board_id--tasks--id-"
+                    onclick="tryItOut('PUTapi-boards--board_id--tasks--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-boards--board_id--tasks--id-"
+                    onclick="cancelTryOut('PUTapi-boards--board_id--tasks--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-boards--board_id--tasks--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/boards/{board_id}/tasks/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/boards/{board_id}/tasks/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="PUTapi-boards--board_id--tasks--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="PUTapi-boards--board_id--tasks--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>board_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="board_id"                data-endpoint="PUTapi-boards--board_id--tasks--id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the board. Example: <code>2</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="PUTapi-boards--board_id--tasks--id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>2</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-DELETEapi-boards--board_id--tasks--id-">Remove the specified resource from storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-boards--board_id--tasks--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://127.0.0.1:8015/api/boards/2/tasks/2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8015/api/boards/2/tasks/2"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-boards--board_id--tasks--id-">
+</span>
+<span id="execution-results-DELETEapi-boards--board_id--tasks--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-boards--board_id--tasks--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-boards--board_id--tasks--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-boards--board_id--tasks--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-boards--board_id--tasks--id-"></code></pre>
+</span>
+<form id="form-DELETEapi-boards--board_id--tasks--id-" data-method="DELETE"
+      data-path="api/boards/{board_id}/tasks/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-boards--board_id--tasks--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-boards--board_id--tasks--id-"
+                    onclick="tryItOut('DELETEapi-boards--board_id--tasks--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-boards--board_id--tasks--id-"
+                    onclick="cancelTryOut('DELETEapi-boards--board_id--tasks--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-boards--board_id--tasks--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/boards/{board_id}/tasks/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="DELETEapi-boards--board_id--tasks--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="DELETEapi-boards--board_id--tasks--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>board_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="board_id"                data-endpoint="DELETEapi-boards--board_id--tasks--id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the board. Example: <code>2</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="DELETEapi-boards--board_id--tasks--id-"
+               value="2"
+               data-component="url">
+    <br>
+<p>The ID of the task. Example: <code>2</code></p>
+            </div>
+                    </form>
+
                 <h1 id="general">General</h1>
 
     <p>you can access it using {{baseUrl}}/storage/images/{filename}</p>
@@ -1494,7 +2704,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"file\": \"hwypbxfkkhgdcgyfjvqtiprjr\"
+    \"file\": \"uvkdecywoijik\"
 }"
 </code></pre></div>
 
@@ -1510,7 +2720,7 @@ const headers = {
 };
 
 let body = {
-    "file": "hwypbxfkkhgdcgyfjvqtiprjr"
+    "file": "uvkdecywoijik"
 };
 
 fetch(url, {
@@ -1623,10 +2833,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="file"                data-endpoint="POSTapi-upload"
-               value="hwypbxfkkhgdcgyfjvqtiprjr"
+               value="uvkdecywoijik"
                data-component="body">
     <br>
-<p>Must not be greater than 10240 characters. Example: <code>hwypbxfkkhgdcgyfjvqtiprjr</code></p>
+<p>Must not be greater than 10240 characters. Example: <code>uvkdecywoijik</code></p>
         </div>
         </form>
 
@@ -1652,9 +2862,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"tempore\",
-    \"limit\": 4,
-    \"page\": 20
+    \"name\": \"veritatis\",
+    \"limit\": 20,
+    \"page\": 2
 }"
 </code></pre></div>
 
@@ -1670,9 +2880,9 @@ const headers = {
 };
 
 let body = {
-    "name": "tempore",
-    "limit": 4,
-    "page": 20
+    "name": "veritatis",
+    "limit": 20,
+    "page": 2
 };
 
 fetch(url, {
@@ -1834,10 +3044,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="GETapi-boards--board_id--labels"
-               value="tempore"
+               value="veritatis"
                data-component="body">
     <br>
-<p>Example: <code>tempore</code></p>
+<p>Example: <code>veritatis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
@@ -1845,10 +3055,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="limit"                data-endpoint="GETapi-boards--board_id--labels"
-               value="4"
+               value="20"
                data-component="body">
     <br>
-<p>Example: <code>4</code></p>
+<p>Example: <code>20</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -1856,10 +3066,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="page"                data-endpoint="GETapi-boards--board_id--labels"
-               value="20"
+               value="2"
                data-component="body">
     <br>
-<p>Example: <code>20</code></p>
+<p>Example: <code>2</code></p>
         </div>
         </form>
 
@@ -1881,7 +3091,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"alias\"
+    \"name\": \"voluptatem\"
 }"
 </code></pre></div>
 
@@ -1897,7 +3107,7 @@ const headers = {
 };
 
 let body = {
-    "name": "alias"
+    "name": "voluptatem"
 };
 
 fetch(url, {
@@ -2038,10 +3248,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-boards--board_id--labels"
-               value="alias"
+               value="voluptatem"
                data-component="body">
     <br>
-<p>Example: <code>alias</code></p>
+<p>Example: <code>voluptatem</code></p>
         </div>
         </form>
 
@@ -2239,7 +3449,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"soluta\"
+    \"name\": \"beatae\"
 }"
 </code></pre></div>
 
@@ -2255,7 +3465,7 @@ const headers = {
 };
 
 let body = {
-    "name": "soluta"
+    "name": "beatae"
 };
 
 fetch(url, {
@@ -2411,10 +3621,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="PUTapi-boards--board_id--labels--id-"
-               value="soluta"
+               value="beatae"
                data-component="body">
     <br>
-<p>Example: <code>soluta</code></p>
+<p>Example: <code>beatae</code></p>
         </div>
         </form>
 
@@ -2850,9 +4060,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"iusto\",
-    \"display_name\": \"ipsum\",
-    \"entity_name\": \"voluptas\"
+    \"name\": \"magnam\",
+    \"display_name\": \"veritatis\",
+    \"entity_name\": \"adipisci\"
 }"
 </code></pre></div>
 
@@ -2868,9 +4078,9 @@ const headers = {
 };
 
 let body = {
-    "name": "iusto",
-    "display_name": "ipsum",
-    "entity_name": "voluptas"
+    "name": "magnam",
+    "display_name": "veritatis",
+    "entity_name": "adipisci"
 };
 
 fetch(url, {
@@ -2975,10 +4185,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-permissions"
-               value="iusto"
+               value="magnam"
                data-component="body">
     <br>
-<p>Example: <code>iusto</code></p>
+<p>Example: <code>magnam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>display_name</code></b>&nbsp;&nbsp;
@@ -2986,10 +4196,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="display_name"                data-endpoint="POSTapi-permissions"
-               value="ipsum"
+               value="veritatis"
                data-component="body">
     <br>
-<p>Example: <code>ipsum</code></p>
+<p>Example: <code>veritatis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>entity_name</code></b>&nbsp;&nbsp;
@@ -2997,10 +4207,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="entity_name"                data-endpoint="POSTapi-permissions"
-               value="voluptas"
+               value="adipisci"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>adipisci</code></p>
         </div>
         </form>
 
@@ -3524,8 +4734,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"qui\",
-    \"display_name\": \"voluptatibus\"
+    \"name\": \"temporibus\",
+    \"display_name\": \"iste\"
 }"
 </code></pre></div>
 
@@ -3541,8 +4751,8 @@ const headers = {
 };
 
 let body = {
-    "name": "qui",
-    "display_name": "voluptatibus"
+    "name": "temporibus",
+    "display_name": "iste"
 };
 
 fetch(url, {
@@ -3646,10 +4856,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-roles"
-               value="qui"
+               value="temporibus"
                data-component="body">
     <br>
-<p>Example: <code>qui</code></p>
+<p>Example: <code>temporibus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>display_name</code></b>&nbsp;&nbsp;
@@ -3657,10 +4867,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="display_name"                data-endpoint="POSTapi-roles"
-               value="voluptatibus"
+               value="iste"
                data-component="body">
     <br>
-<p>Example: <code>voluptatibus</code></p>
+<p>Example: <code>iste</code></p>
         </div>
         </form>
 
@@ -3811,10 +5021,10 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"display_name\": \"qui\",
+    \"display_name\": \"non\",
     \"permissions\": [
         {
-            \"id\": \"aliquid\"
+            \"id\": \"laboriosam\"
         }
     ]
 }"
@@ -3832,10 +5042,10 @@ const headers = {
 };
 
 let body = {
-    "display_name": "qui",
+    "display_name": "non",
     "permissions": [
         {
-            "id": "aliquid"
+            "id": "laboriosam"
         }
     ]
 };
@@ -3971,10 +5181,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="display_name"                data-endpoint="PUTapi-roles--id-"
-               value="qui"
+               value="non"
                data-component="body">
     <br>
-<p>Example: <code>qui</code></p>
+<p>Example: <code>non</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
         <details>
@@ -3991,10 +5201,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="permissions.0.id"                data-endpoint="PUTapi-roles--id-"
-               value="aliquid"
+               value="laboriosam"
                data-component="body">
     <br>
-<p>Example: <code>aliquid</code></p>
+<p>Example: <code>laboriosam</code></p>
                     </div>
                                     </details>
         </div>
@@ -4135,9 +5345,9 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"nostrum\",
-    \"limit\": 16,
-    \"page\": 1
+    \"name\": \"enim\",
+    \"limit\": 9,
+    \"page\": 9
 }"
 </code></pre></div>
 
@@ -4153,9 +5363,9 @@ const headers = {
 };
 
 let body = {
-    "name": "nostrum",
-    "limit": 16,
-    "page": 1
+    "name": "enim",
+    "limit": 9,
+    "page": 9
 };
 
 fetch(url, {
@@ -4324,10 +5534,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="GETapi-boards--board_id--statuses"
-               value="nostrum"
+               value="enim"
                data-component="body">
     <br>
-<p>Example: <code>nostrum</code></p>
+<p>Example: <code>enim</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
@@ -4335,10 +5545,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="limit"                data-endpoint="GETapi-boards--board_id--statuses"
-               value="16"
+               value="9"
                data-component="body">
     <br>
-<p>Example: <code>16</code></p>
+<p>Example: <code>9</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -4346,10 +5556,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="page"                data-endpoint="GETapi-boards--board_id--statuses"
-               value="1"
+               value="9"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>9</code></p>
         </div>
         </form>
 
@@ -4371,7 +5581,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"quas\"
+    \"name\": \"maxime\",
+    \"initial\": false
 }"
 </code></pre></div>
 
@@ -4387,7 +5598,8 @@ const headers = {
 };
 
 let body = {
-    "name": "quas"
+    "name": "maxime",
+    "initial": false
 };
 
 fetch(url, {
@@ -4528,10 +5740,31 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-boards--board_id--statuses"
-               value="quas"
+               value="maxime"
                data-component="body">
     <br>
-<p>Example: <code>quas</code></p>
+<p>Example: <code>maxime</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>initial</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+                <label data-endpoint="POSTapi-boards--board_id--statuses" style="display: none">
+            <input type="radio" name="initial"
+                   value="true"
+                   data-endpoint="POSTapi-boards--board_id--statuses"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-boards--board_id--statuses" style="display: none">
+            <input type="radio" name="initial"
+                   value="false"
+                   data-endpoint="POSTapi-boards--board_id--statuses"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -4729,7 +5962,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"quibusdam\"
+    \"name\": \"repudiandae\",
+    \"initial\": true
 }"
 </code></pre></div>
 
@@ -4745,7 +5979,8 @@ const headers = {
 };
 
 let body = {
-    "name": "quibusdam"
+    "name": "repudiandae",
+    "initial": true
 };
 
 fetch(url, {
@@ -4919,10 +6154,31 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="PUTapi-boards--board_id--statuses--id-"
-               value="quibusdam"
+               value="repudiandae"
                data-component="body">
     <br>
-<p>Example: <code>quibusdam</code></p>
+<p>Example: <code>repudiandae</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>initial</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+                <label data-endpoint="PUTapi-boards--board_id--statuses--id-" style="display: none">
+            <input type="radio" name="initial"
+                   value="true"
+                   data-endpoint="PUTapi-boards--board_id--statuses--id-"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="PUTapi-boards--board_id--statuses--id-" style="display: none">
+            <input type="radio" name="initial"
+                   value="false"
+                   data-endpoint="PUTapi-boards--board_id--statuses--id-"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -5100,11 +6356,11 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"minus\",
-    \"email\": \"hdouglas@example.org\",
-    \"role_id\": 5,
-    \"limit\": 20,
-    \"page\": 15
+    \"name\": \"veniam\",
+    \"email\": \"mschmeler@example.com\",
+    \"role_id\": 4,
+    \"limit\": 6,
+    \"page\": 10
 }"
 </code></pre></div>
 
@@ -5120,11 +6376,11 @@ const headers = {
 };
 
 let body = {
-    "name": "minus",
-    "email": "hdouglas@example.org",
-    "role_id": 5,
-    "limit": 20,
-    "page": 15
+    "name": "veniam",
+    "email": "mschmeler@example.com",
+    "role_id": 4,
+    "limit": 6,
+    "page": 10
 };
 
 fetch(url, {
@@ -5259,10 +6515,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="GETapi-users"
-               value="minus"
+               value="veniam"
                data-component="body">
     <br>
-<p>Example: <code>minus</code></p>
+<p>Example: <code>veniam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -5270,10 +6526,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="GETapi-users"
-               value="hdouglas@example.org"
+               value="mschmeler@example.com"
                data-component="body">
     <br>
-<p>Example: <code>hdouglas@example.org</code></p>
+<p>Example: <code>mschmeler@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
@@ -5281,10 +6537,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="role_id"                data-endpoint="GETapi-users"
-               value="5"
+               value="4"
                data-component="body">
     <br>
-<p>Example: <code>5</code></p>
+<p>Example: <code>4</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>limit</code></b>&nbsp;&nbsp;
@@ -5292,10 +6548,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="limit"                data-endpoint="GETapi-users"
-               value="20"
+               value="6"
                data-component="body">
     <br>
-<p>Example: <code>20</code></p>
+<p>Example: <code>6</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
@@ -5303,10 +6559,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="page"                data-endpoint="GETapi-users"
-               value="15"
+               value="10"
                data-component="body">
     <br>
-<p>Example: <code>15</code></p>
+<p>Example: <code>10</code></p>
         </div>
         </form>
 
@@ -5328,10 +6584,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"quia\",
-    \"email\": \"thea68@example.com\",
-    \"password\": \"=N_^.VL\",
-    \"role_id\": 11
+    \"name\": \"qui\",
+    \"email\": \"glen.tillman@example.net\",
+    \"password\": \"VMpi=jSd.&amp;-YWFRG,;7\",
+    \"role_id\": 14
 }"
 </code></pre></div>
 
@@ -5347,10 +6603,10 @@ const headers = {
 };
 
 let body = {
-    "name": "quia",
-    "email": "thea68@example.com",
-    "password": "=N_^.VL",
-    "role_id": 11
+    "name": "qui",
+    "email": "glen.tillman@example.net",
+    "password": "VMpi=jSd.&amp;-YWFRG,;7",
+    "role_id": 14
 };
 
 fetch(url, {
@@ -5480,10 +6736,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-users"
-               value="quia"
+               value="qui"
                data-component="body">
     <br>
-<p>Example: <code>quia</code></p>
+<p>Example: <code>qui</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -5491,10 +6747,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-users"
-               value="thea68@example.com"
+               value="glen.tillman@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>thea68@example.com</code></p>
+<p>Must be a valid email address. Example: <code>glen.tillman@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -5502,10 +6758,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-users"
-               value="=N_^.VL"
+               value="VMpi=jSd.&-YWFRG,;7"
                data-component="body">
     <br>
-<p>Example: <code>=N_^.VL</code></p>
+<p>Example: <code>VMpi=jSd.&amp;-YWFRG,;7</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
@@ -5513,10 +6769,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="role_id"                data-endpoint="POSTapi-users"
-               value="11"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>11</code></p>
+<p>Example: <code>14</code></p>
         </div>
         </form>
 
@@ -5688,10 +6944,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"culpa\",
-    \"email\": \"jroberts@example.org\",
-    \"password\": \"+b8HA:DehSE\",
-    \"role_id\": 7,
+    \"name\": \"ut\",
+    \"email\": \"herzog.roy@example.net\",
+    \"password\": \".b.?[]KTg\\/6C\",
+    \"role_id\": 3,
     \"is_active\": false
 }"
 </code></pre></div>
@@ -5708,10 +6964,10 @@ const headers = {
 };
 
 let body = {
-    "name": "culpa",
-    "email": "jroberts@example.org",
-    "password": "+b8HA:DehSE",
-    "role_id": 7,
+    "name": "ut",
+    "email": "herzog.roy@example.net",
+    "password": ".b.?[]KTg\/6C",
+    "role_id": 3,
     "is_active": false
 };
 
@@ -5860,10 +7116,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="PUTapi-users--id-"
-               value="culpa"
+               value="ut"
                data-component="body">
     <br>
-<p>Example: <code>culpa</code></p>
+<p>Example: <code>ut</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -5871,10 +7127,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="PUTapi-users--id-"
-               value="jroberts@example.org"
+               value="herzog.roy@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>jroberts@example.org</code></p>
+<p>Must be a valid email address. Example: <code>herzog.roy@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -5882,10 +7138,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="PUTapi-users--id-"
-               value="+b8HA:DehSE"
+               value=".b.?[]KTg/6C"
                data-component="body">
     <br>
-<p>Example: <code>+b8HA:DehSE</code></p>
+<p>Example: <code>.b.?[]KTg/6C</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
@@ -5893,10 +7149,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="role_id"                data-endpoint="PUTapi-users--id-"
-               value="7"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>7</code></p>
+<p>Example: <code>3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;

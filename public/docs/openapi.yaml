@@ -96,11 +96,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: zthompson@example.net
+                  example: tkessler@example.net
                 password:
                   type: string
                   description: ''
-                  example: "?iqmKOA,z9VDiM2X;ZX'"
+                  example: eI=AdvAn8a@<<
               required:
                 - email
                 - password
@@ -238,7 +238,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: odit
+                  example: maiores
               required:
                 - user_id
     parameters:
@@ -402,15 +402,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: qui
+                  example: commodi
                 limit:
                   type: integer
                   description: ''
-                  example: 1
+                  example: 14
                 page:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 17
     post:
       summary: 'Store a newly created board in storage.'
       operationId: storeANewlyCreatedBoardInStorage
@@ -527,11 +527,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: alias
+                  example: quidem
                 description:
                   type: string
                   description: ''
-                  example: 'Temporibus sint autem qui expedita.'
+                  example: 'Debitis beatae atque consectetur omnis.'
               required:
                 - name
   '/api/boards/{id}':
@@ -733,11 +733,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: omnis
+                  example: doloribus
                 description:
                   type: string
                   description: ''
-                  example: 'Reprehenderit qui corporis reprehenderit.'
+                  example: 'Est consectetur recusandae hic omnis quasi nisi.'
               required:
                 - name
     delete:
@@ -807,6 +807,946 @@ paths:
         in: path
         name: id
         description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/tasks/{task_id}/assign':
+    put:
+      summary: 'Assign task to user.'
+      operationId: assignTaskToUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user assigns a task to user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 3
+                    board_id: 4
+                    status_id: 2
+                    assignee_id: 11
+                    title: 'Test task'
+                    description: test
+                    image: null
+                    due_date: '2023-05-01'
+                    created_at: '2023-02-07T17:18:17.000000Z'
+                    updated_at: '2023-02-08T09:06:41.000000Z'
+                    board:
+                      id: 4
+                      user_id: 2
+                      name: 'Project 1'
+                      description: 'First project'
+                      created_at: '2023-02-05T12:58:21.000000Z'
+                      updated_at: '2023-02-05T12:58:21.000000Z'
+                      owner:
+                        id: 2
+                        role_id: 5
+                        name: 'Product owner'
+                        active: 1
+                        email: product_ower@example.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T09:44:02.000000Z'
+                        updated_at: '2023-02-05T09:44:02.000000Z'
+                    assignee:
+                      id: 9
+                      board_id: 2
+                      user_id: 3
+                      created_at: '2023-02-06T07:14:45.000000Z'
+                      updated_at: '2023-02-06T07:14:45.000000Z'
+                      laravel_through_key: 3
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                      board_id:
+                        type: integer
+                        example: 4
+                      status_id:
+                        type: integer
+                        example: 2
+                      assignee_id:
+                        type: integer
+                        example: 11
+                      title:
+                        type: string
+                        example: 'Test task'
+                      description:
+                        type: string
+                        example: test
+                      image:
+                        type: string
+                        example: null
+                      due_date:
+                        type: string
+                        example: '2023-05-01'
+                      created_at:
+                        type: string
+                        example: '2023-02-07T17:18:17.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-08T09:06:41.000000Z'
+                      board:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 4
+                          user_id:
+                            type: integer
+                            example: 2
+                          name:
+                            type: string
+                            example: 'Project 1'
+                          description:
+                            type: string
+                            example: 'First project'
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:58:21.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T12:58:21.000000Z'
+                          owner:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 2
+                              role_id:
+                                type: integer
+                                example: 5
+                              name:
+                                type: string
+                                example: 'Product owner'
+                              active:
+                                type: integer
+                                example: 1
+                              email:
+                                type: string
+                                example: product_ower@example.com
+                              email_verified_at:
+                                type: string
+                                example: null
+                              created_at:
+                                type: string
+                                example: '2023-02-05T09:44:02.000000Z'
+                              updated_at:
+                                type: string
+                                example: '2023-02-05T09:44:02.000000Z'
+                      assignee:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 9
+                          board_id:
+                            type: integer
+                            example: 2
+                          user_id:
+                            type: integer
+                            example: 3
+                          created_at:
+                            type: string
+                            example: '2023-02-06T07:14:45.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-06T07:14:45.000000Z'
+                          laravel_through_key:
+                            type: integer
+                            example: 3
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: sequi
+              required:
+                - user_id
+      security: []
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: task_id
+        description: 'The ID of the task.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/tasks/{task_id}/move':
+    put:
+      summary: 'move a task to another status.'
+      operationId: moveATaskToAnotherStatus
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user moves a task to another status'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 2
+                    board_id: 2
+                    status_id: 2
+                    assignee_id: null
+                    title: 'Test task'
+                    description: test
+                    image: null
+                    due_date: '2023-05-01'
+                    created_at: '2023-02-07T17:17:48.000000Z'
+                    updated_at: '2023-02-08T06:54:33.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      board_id:
+                        type: integer
+                        example: 2
+                      status_id:
+                        type: integer
+                        example: 2
+                      assignee_id:
+                        type: string
+                        example: null
+                      title:
+                        type: string
+                        example: 'Test task'
+                      description:
+                        type: string
+                        example: test
+                      image:
+                        type: string
+                        example: null
+                      due_date:
+                        type: string
+                        example: '2023-05-01'
+                      created_at:
+                        type: string
+                        example: '2023-02-07T17:17:48.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-08T06:54:33.000000Z'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status_id:
+                  type: string
+                  description: ''
+                  example: tenetur
+              required:
+                - status_id
+      security: []
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: task_id
+        description: 'The ID of the task.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/tasks':
+    post:
+      summary: 'Store a newly created task in storage.'
+      operationId: storeANewlyCreatedTaskInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user creates new task'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    title: 'Test task'
+                    description: test
+                    image: null
+                    due_date: '2023-05-01'
+                    status_id: 1
+                    board_id: 2
+                    updated_at: '2023-02-07T17:22:23.000000Z'
+                    created_at: '2023-02-07T17:22:23.000000Z'
+                    id: 5
+                    board:
+                      id: 2
+                      user_id: 1
+                      name: 'Project 1'
+                      description: 'First project'
+                      created_at: '2023-02-05T12:08:58.000000Z'
+                      updated_at: '2023-02-05T14:11:34.000000Z'
+                      owner:
+                        id: 1
+                        role_id: 1
+                        name: Dima
+                        active: 1
+                        email: dimaaljammal9410@gmail.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T12:08:36.000000Z'
+                        updated_at: '2023-02-05T12:08:36.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      title:
+                        type: string
+                        example: 'Test task'
+                      description:
+                        type: string
+                        example: test
+                      image:
+                        type: string
+                        example: null
+                      due_date:
+                        type: string
+                        example: '2023-05-01'
+                      status_id:
+                        type: integer
+                        example: 1
+                      board_id:
+                        type: integer
+                        example: 2
+                      updated_at:
+                        type: string
+                        example: '2023-02-07T17:22:23.000000Z'
+                      created_at:
+                        type: string
+                        example: '2023-02-07T17:22:23.000000Z'
+                      id:
+                        type: integer
+                        example: 5
+                      board:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 2
+                          user_id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Project 1'
+                          description:
+                            type: string
+                            example: 'First project'
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:08:58.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T14:11:34.000000Z'
+                          owner:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              role_id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: Dima
+                              active:
+                                type: integer
+                                example: 1
+                              email:
+                                type: string
+                                example: dimaaljammal9410@gmail.com
+                              email_verified_at:
+                                type: string
+                                example: null
+                              created_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+                              updated_at:
+                                type: string
+                                example: '2023-02-05T12:08:36.000000Z'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status_id:
+                  type: string
+                  description: ''
+                  example: null
+                assignee_id:
+                  type: string
+                  description: ''
+                  example: null
+                title:
+                  type: string
+                  description: ''
+                  example: quidem
+                description:
+                  type: string
+                  description: ''
+                  example: 'Est porro omnis vitae non deserunt occaecati dolor.'
+                image:
+                  type: string
+                  description: ''
+                  example: blanditiis
+                due_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-02-08T11:18:39'
+                0:
+                  type: string
+                  description: 'Must be a date after or equal to <code>today</code>.'
+                  example: '2107-03-31'
+                labels:
+                  type: array
+                  description: ''
+                  example:
+                    - []
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: ''
+                        example: rerum
+                    required:
+                      - id
+              required:
+                - title
+                - due_date
+      security: []
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/boards/{board_id}/tasks/{id}':
+    get:
+      summary: 'View task with log.'
+      operationId: viewTaskWithLog
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: 'unauthenticated user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: 'Invalid inputs'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email must be a valid email address.'
+                  errors:
+                    email:
+                      - 'The email must be a valid email address.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email must be a valid email address.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email must be a valid email address.'
+                        items:
+                          type: string
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+        200:
+          description: 'unauthenticated user assigns a task to user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Success
+                  data:
+                    id: 3
+                    board_id: 4
+                    status_id: 2
+                    assignee_id: 11
+                    title: 'Test task'
+                    description: test
+                    image: null
+                    due_date: '2023-05-01'
+                    created_at: '2023-02-07T17:18:17.000000Z'
+                    updated_at: '2023-02-08T09:06:41.000000Z'
+                    board:
+                      id: 4
+                      user_id: 2
+                      name: 'Project 1'
+                      description: 'First project'
+                      created_at: '2023-02-05T12:58:21.000000Z'
+                      updated_at: '2023-02-05T12:58:21.000000Z'
+                      owner:
+                        id: 2
+                        role_id: 5
+                        name: 'Product owner'
+                        active: 1
+                        email: product_ower@example.com
+                        email_verified_at: null
+                        created_at: '2023-02-05T09:44:02.000000Z'
+                        updated_at: '2023-02-05T09:44:02.000000Z'
+                    assignee:
+                      id: 9
+                      board_id: 2
+                      user_id: 3
+                      created_at: '2023-02-06T07:14:45.000000Z'
+                      updated_at: '2023-02-06T07:14:45.000000Z'
+                      laravel_through_key: 3
+                properties:
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 3
+                      board_id:
+                        type: integer
+                        example: 4
+                      status_id:
+                        type: integer
+                        example: 2
+                      assignee_id:
+                        type: integer
+                        example: 11
+                      title:
+                        type: string
+                        example: 'Test task'
+                      description:
+                        type: string
+                        example: test
+                      image:
+                        type: string
+                        example: null
+                      due_date:
+                        type: string
+                        example: '2023-05-01'
+                      created_at:
+                        type: string
+                        example: '2023-02-07T17:18:17.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-02-08T09:06:41.000000Z'
+                      board:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 4
+                          user_id:
+                            type: integer
+                            example: 2
+                          name:
+                            type: string
+                            example: 'Project 1'
+                          description:
+                            type: string
+                            example: 'First project'
+                          created_at:
+                            type: string
+                            example: '2023-02-05T12:58:21.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-05T12:58:21.000000Z'
+                          owner:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 2
+                              role_id:
+                                type: integer
+                                example: 5
+                              name:
+                                type: string
+                                example: 'Product owner'
+                              active:
+                                type: integer
+                                example: 1
+                              email:
+                                type: string
+                                example: product_ower@example.com
+                              email_verified_at:
+                                type: string
+                                example: null
+                              created_at:
+                                type: string
+                                example: '2023-02-05T09:44:02.000000Z'
+                              updated_at:
+                                type: string
+                                example: '2023-02-05T09:44:02.000000Z'
+                      assignee:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 9
+                          board_id:
+                            type: integer
+                            example: 2
+                          user_id:
+                            type: integer
+                            example: 3
+                          created_at:
+                            type: string
+                            example: '2023-02-06T07:14:45.000000Z'
+                          updated_at:
+                            type: string
+                            example: '2023-02-06T07:14:45.000000Z'
+                          laravel_through_key:
+                            type: integer
+                            example: 3
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: board_id
+        description: 'The ID of the board.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
         example: 2
         required: true
         schema:
@@ -892,7 +1832,7 @@ paths:
                 file:
                   type: string
                   description: 'Must not be greater than 10240 characters.'
-                  example: hwypbxfkkhgdcgyfjvqtiprjr
+                  example: uvkdecywoijik
               required:
                 - file
   '/api/boards/{board_id}/labels':
@@ -1062,15 +2002,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: tempore
+                  example: veritatis
                 limit:
                   type: integer
                   description: ''
-                  example: 4
+                  example: 20
                 page:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 2
     post:
       summary: 'Store a newly created label in storage.'
       operationId: storeANewlyCreatedLabelInStorage
@@ -1187,7 +2127,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: alias
+                  example: voluptatem
               required:
                 - name
     parameters:
@@ -1462,7 +2402,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: soluta
+                  example: beatae
               required:
                 - name
     delete:
@@ -1776,15 +2716,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: iusto
+                  example: magnam
                 display_name:
                   type: string
                   description: ''
-                  example: ipsum
+                  example: veritatis
                 entity_name:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: adipisci
               required:
                 - name
                 - display_name
@@ -2011,11 +2951,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: qui
+                  example: temporibus
                 display_name:
                   type: string
                   description: ''
-                  example: voluptatibus
+                  example: iste
               required:
                 - name
                 - display_name
@@ -2150,7 +3090,7 @@ paths:
                 display_name:
                   type: string
                   description: ''
-                  example: qui
+                  example: non
                 permissions:
                   type: array
                   description: ''
@@ -2162,7 +3102,7 @@ paths:
                       id:
                         type: string
                         description: ''
-                        example: aliquid
+                        example: laboriosam
                     required:
                       - id
     delete:
@@ -2375,15 +3315,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: nostrum
+                  example: enim
                 limit:
                   type: integer
                   description: ''
-                  example: 16
+                  example: 9
                 page:
                   type: integer
                   description: ''
-                  example: 1
+                  example: 9
     post:
       summary: 'Store a newly created status in storage.'
       operationId: storeANewlyCreatedStatusInStorage
@@ -2500,9 +3440,14 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quas
+                  example: maxime
+                initial:
+                  type: boolean
+                  description: ''
+                  example: false
               required:
                 - name
+                - initial
     parameters:
       -
         in: path
@@ -2839,9 +3784,14 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quibusdam
+                  example: repudiandae
+                initial:
+                  type: boolean
+                  description: ''
+                  example: true
               required:
                 - name
+                - initial
     delete:
       summary: 'Remove the specified status from storage.'
       operationId: removeTheSpecifiedStatusFromStorage
@@ -3073,23 +4023,23 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: minus
+                  example: veniam
                 email:
                   type: string
                   description: ''
-                  example: hdouglas@example.org
+                  example: mschmeler@example.com
                 role_id:
                   type: integer
                   description: ''
-                  example: 5
+                  example: 4
                 limit:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 6
                 page:
                   type: integer
                   description: ''
-                  example: 15
+                  example: 10
     post:
       summary: 'Store a newly created user in storage.'
       operationId: storeANewlyCreatedUserInStorage
@@ -3210,19 +4160,19 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quia
+                  example: qui
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: thea68@example.com
+                  example: glen.tillman@example.net
                 password:
                   type: string
                   description: ''
-                  example: '=N_^.VL'
+                  example: 'VMpi=jSd.&-YWFRG,;7'
                 role_id:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 14
               required:
                 - name
                 - email
@@ -3451,19 +4401,19 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: culpa
+                  example: ut
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: jroberts@example.org
+                  example: herzog.roy@example.net
                 password:
                   type: string
                   description: ''
-                  example: '+b8HA:DehSE'
+                  example: '.b.?[]KTg/6C'
                 role_id:
                   type: integer
                   description: ''
-                  example: 7
+                  example: 3
                 is_active:
                   type: boolean
                   description: ''
@@ -3545,6 +4495,9 @@ tags:
     description: ''
   -
     name: 'Board management'
+    description: ''
+  -
+    name: Endpoints
     description: ''
   -
     name: General
