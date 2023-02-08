@@ -70,7 +70,7 @@ class TaskRepository extends BaseRepository
 
     public function assign(Task $task, $data)
     {
-        if (!$this->canAssign($task->id, $data['user_id'])) {
+        if (!$this->canAssign($task->currentStatus->id, $data['user_id'])) {
             throw new AuthorizationException('task cannot be assigned to the user');
         }
         $assignee = $task->board->users()->where('user_id', $data['user_id'])->first();
@@ -83,15 +83,15 @@ class TaskRepository extends BaseRepository
 
     public function move(Task $task, $data)
     {
-        if (!$this->canMove(auth()->user()->id, $task->id)) {
-            throw new AuthorizationException('task cannot be assigned to the user');
-        }
         $oldStatus = $task->currentStatus;
         $newStatus = Status::find($data['status_id']);
+        if (!$this->canMove(auth()->user()->id, $data['status_id'])) {
+            throw new AuthorizationException('user ' . auth()->user()->name . ' cannot move task to ' . $newStatus->name);
+        }
         $task->update([
             'status_id' => $data['status_id']
         ]);
         event(new TakingAnActionOnTask($task, 'Task moved from' . $oldStatus->name . 'To ' . $newStatus->name));
-        return $task;
+        return new TaskIndexResource($task);
     }
 }
