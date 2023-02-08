@@ -68,27 +68,27 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: magnam
+        example: et
         type: string
         custom: []
       display_name:
         name: display_name
         description: ''
         required: true
-        example: veritatis
+        example: nihil
         type: string
         custom: []
       entity_name:
         name: entity_name
         description: ''
         required: true
-        example: adipisci
+        example: quidem
         type: string
         custom: []
     cleanBodyParameters:
-      name: magnam
-      display_name: veritatis
-      entity_name: adipisci
+      name: et
+      display_name: nihil
+      entity_name: quidem
     fileParameters: []
     responses:
       -

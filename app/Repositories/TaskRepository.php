@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Events\TakingAnActionOnTask;
-use App\Http\Resources\TaskIndexResource;
+use App\Http\Resources\Tasks\TaskIndexResource;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Models\User;
@@ -66,7 +66,7 @@ class TaskRepository extends BaseRepository
             'assignee_id' => $assignee->pivot->id
         ]);
         event(new TakingAnActionOnTask($task, 'Task assigned to' . $assignee->user_id));
-        return new TaskResource($task);
+        return new TaskIndexResource($task);
     }
 
     public function move(Task $task, $data)

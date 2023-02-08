@@ -26,43 +26,43 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: veniam
+        example: dolor
         type: string
         custom: []
       email:
         name: email
         description: ''
         required: false
-        example: mschmeler@example.com
+        example: alize.kovacek@example.net
         type: string
         custom: []
       role_id:
         name: role_id
         description: ''
         required: false
-        example: 4
+        example: 12
         type: integer
         custom: []
       limit:
         name: limit
         description: ''
         required: false
-        example: 6
+        example: 7
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 10
+        example: 17
         type: integer
         custom: []
     cleanBodyParameters:
-      name: veniam
-      email: mschmeler@example.com
-      role_id: 4
-      limit: 6
-      page: 10
+      name: dolor
+      email: alize.kovacek@example.net
+      role_id: 12
+      limit: 7
+      page: 17
     fileParameters: []
     responses:
       -
@@ -114,35 +114,35 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: qui
+        example: eligendi
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: glen.tillman@example.net
+        example: broderick.kemmer@example.net
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: 'VMpi=jSd.&-YWFRG,;7'
+        example: ">2?''GU:VXGpBxJ7;l"
         type: string
         custom: []
       role_id:
         name: role_id
         description: ''
         required: true
-        example: 14
+        example: 6
         type: integer
         custom: []
     cleanBodyParameters:
-      name: qui
-      email: glen.tillman@example.net
-      password: 'VMpi=jSd.&-YWFRG,;7'
-      role_id: 14
+      name: eligendi
+      email: broderick.kemmer@example.net
+      password: ">2?''GU:VXGpBxJ7;l"
+      role_id: 6
     fileParameters: []
     responses:
       -
@@ -265,43 +265,43 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: ut
+        example: consequuntur
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: herzog.roy@example.net
+        example: zjohnson@example.net
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: false
-        example: '.b.?[]KTg/6C'
+        example: 'vd+wqU[6ULqwWJ}ANbs'
         type: string
         custom: []
       role_id:
         name: role_id
         description: ''
         required: false
-        example: 3
+        example: 11
         type: integer
         custom: []
       is_active:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
     cleanBodyParameters:
-      name: ut
-      email: herzog.roy@example.net
-      password: '.b.?[]KTg/6C'
-      role_id: 3
-      is_active: false
+      name: consequuntur
+      email: zjohnson@example.net
+      password: 'vd+wqU[6ULqwWJ}ANbs'
+      role_id: 11
+      is_active: true
     fileParameters: []
     responses:
       -

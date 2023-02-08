@@ -34,11 +34,11 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: maiores
+        example: repudiandae
         type: string
         custom: []
     cleanBodyParameters:
-      user_id: maiores
+      user_id: repudiandae
     fileParameters: []
     responses:
       -
@@ -90,27 +90,27 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: commodi
+        example: omnis
         type: string
         custom: []
       limit:
         name: limit
         description: ''
         required: false
-        example: 14
+        example: 5
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 17
+        example: 10
         type: integer
         custom: []
     cleanBodyParameters:
-      name: commodi
-      limit: 14
-      page: 17
+      name: omnis
+      limit: 5
+      page: 10
     fileParameters: []
     responses:
       -
@@ -162,19 +162,19 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: quidem
+        example: animi
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: false
-        example: 'Debitis beatae atque consectetur omnis.'
+        example: 'Molestias corporis illo dolorum et maxime exercitationem.'
         type: string
         custom: []
     cleanBodyParameters:
-      name: quidem
-      description: 'Debitis beatae atque consectetur omnis.'
+      name: animi
+      description: 'Molestias corporis illo dolorum et maxime exercitationem.'
     fileParameters: []
     responses:
       -
@@ -297,19 +297,19 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: doloribus
+        example: qui
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: false
-        example: 'Est consectetur recusandae hic omnis quasi nisi.'
+        example: 'Facilis quibusdam quia consequuntur voluptatem.'
         type: string
         custom: []
     cleanBodyParameters:
-      name: doloribus
-      description: 'Est consectetur recusandae hic omnis quasi nisi.'
+      name: qui
+      description: 'Facilis quibusdam quia consequuntur voluptatem.'
     fileParameters: []
     responses:
       -

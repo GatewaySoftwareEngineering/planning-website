@@ -119,6 +119,6 @@ class UserController extends Controller
     {
         $file=$request->file('file')->store('public/users');
         Excel::import(new ImportUser, $file);
-        return $this->respond(["message" => "users have been imported successfully"]);
+        return $this->respond(["message" => "Users have been imported successfully"]);
     }
 }

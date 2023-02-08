@@ -2,8 +2,11 @@
 
 namespace App\Repositories;
 
+use file;
 use App\Models\User;
+use App\Imports\ImportUser;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserRepository extends BaseRepository
 {

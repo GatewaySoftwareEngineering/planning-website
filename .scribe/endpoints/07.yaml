@@ -34,27 +34,27 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: veritatis
+        example: mollitia
         type: string
         custom: []
       limit:
         name: limit
         description: ''
         required: false
-        example: 20
+        example: 6
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 2
+        example: 9
         type: integer
         custom: []
     cleanBodyParameters:
-      name: veritatis
-      limit: 20
-      page: 2
+      name: mollitia
+      limit: 6
+      page: 9
     fileParameters: []
     responses:
       -
@@ -114,11 +114,11 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: voluptatem
+        example: consequatur
         type: string
         custom: []
     cleanBodyParameters:
-      name: voluptatem
+      name: consequatur
     fileParameters: []
     responses:
       -
@@ -257,11 +257,11 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: beatae
+        example: sint
         type: string
         custom: []
     cleanBodyParameters:
-      name: beatae
+      name: sint
     fileParameters: []
     responses:
       -

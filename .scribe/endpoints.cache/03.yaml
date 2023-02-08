@@ -70,19 +70,19 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: temporibus
+        example: est
         type: string
         custom: []
       display_name:
         name: display_name
         description: ''
         required: true
-        example: iste
+        example: ipsam
         type: string
         custom: []
     cleanBodyParameters:
-      name: temporibus
-      display_name: iste
+      name: est
+      display_name: ipsam
     fileParameters: []
     responses:
       -
@@ -184,7 +184,7 @@ endpoints:
         name: display_name
         description: ''
         required: false
-        example: non
+        example: cum
         type: string
         custom: []
       permissions:
@@ -199,14 +199,14 @@ endpoints:
         name: 'permissions[].id'
         description: ''
         required: true
-        example: laboriosam
+        example: perferendis
         type: string
         custom: []
     cleanBodyParameters:
-      display_name: non
+      display_name: cum
       permissions:
         -
-          id: laboriosam
+          id: perferendis
     fileParameters: []
     responses:
       -

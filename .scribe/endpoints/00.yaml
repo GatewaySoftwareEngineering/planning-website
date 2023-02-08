@@ -26,19 +26,19 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: tkessler@example.net
+        example: aliya.grady@example.com
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: eI=AdvAn8a@<<
+        example: S3a)4De^M>z`Xz$GI(s3
         type: string
         custom: []
     cleanBodyParameters:
-      email: tkessler@example.net
-      password: eI=AdvAn8a@<<
+      email: aliya.grady@example.com
+      password: S3a)4De^M>z`Xz$GI(s3
     fileParameters: []
     responses:
       -

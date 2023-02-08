@@ -28,11 +28,11 @@ endpoints:
         name: file
         description: 'Must not be greater than 10240 characters.'
         required: true
-        example: uvkdecywoijik
+        example: fxoskyzrjiaqbnw
         type: string
         custom: []
     cleanBodyParameters:
-      file: uvkdecywoijik
+      file: fxoskyzrjiaqbnw
     fileParameters: []
     responses:
       -

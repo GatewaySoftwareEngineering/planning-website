@@ -34,27 +34,27 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: enim
+        example: repellat
         type: string
         custom: []
       limit:
         name: limit
         description: ''
         required: false
-        example: 9
+        example: 17
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 9
+        example: 20
         type: integer
         custom: []
     cleanBodyParameters:
-      name: enim
-      limit: 9
-      page: 9
+      name: repellat
+      limit: 17
+      page: 20
     fileParameters: []
     responses:
       -
@@ -114,7 +114,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: maxime
+        example: necessitatibus
         type: string
         custom: []
       initial:
@@ -125,7 +125,7 @@ endpoints:
         type: boolean
         custom: []
     cleanBodyParameters:
-      name: maxime
+      name: necessitatibus
       initial: false
     fileParameters: []
     responses:
@@ -265,19 +265,19 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: repudiandae
+        example: deleniti
         type: string
         custom: []
       initial:
         name: initial
         description: ''
         required: true
-        example: true
+        example: false
         type: boolean
         custom: []
     cleanBodyParameters:
-      name: repudiandae
-      initial: true
+      name: deleniti
+      initial: false
     fileParameters: []
     responses:
       -
