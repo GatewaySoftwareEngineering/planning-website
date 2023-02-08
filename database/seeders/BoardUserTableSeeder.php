@@ -59,6 +59,14 @@ class BoardUserTableSeeder extends Seeder
                 'created_at' => '2023-02-06 07:14:49',
                 'updated_at' => '2023-02-06 07:14:49',
             ),
+            5 => 
+            array (
+                'id' => 11,
+                'board_id' => 4,
+                'user_id' => 3,
+                'created_at' => '2023-02-08 11:57:30',
+                'updated_at' => '2023-02-08 11:57:30',
+            ),
         ));
         
         

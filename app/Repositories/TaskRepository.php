@@ -2,13 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Events\TakingAnActionOnTask;
-use App\Http\Resources\Tasks\TaskIndexResource;
-use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Board;
 use App\Models\Status;
+use Illuminate\Support\Facades\DB;
+use App\Events\TakingAnActionOnTask;
+use App\Http\Resources\TaskResource;
+use App\Http\Resources\Tasks\TaskIndexResource;
 use Illuminate\Auth\Access\AuthorizationException;
 
 class TaskRepository extends BaseRepository
@@ -17,7 +18,7 @@ class TaskRepository extends BaseRepository
     {
         $query = Task::canBrowse()->where('board_id', $board->id)->latest();
         isset($data['title']) ?? $query->whereRaw("LOWER(`title`) LIKE '%" . strtolower($data['title']) . "%'");
-        $tasks=$query->get();
+        $tasks = $query->get();
         return $this->paginate(TaskIndexResource::collection($tasks));
     }
 
@@ -28,15 +29,26 @@ class TaskRepository extends BaseRepository
             throw new AuthorizationException('task cannot be assigned to the user');
         }
         $data['board_id'] = $board->id;
-        $task = Task::create($data);
-        event(new TakingAnActionOnTask($task, 'Task created'));
-        return $task;
+
+        $task = DB::transaction(function () use ($data) {
+            $task = Task::create($data);
+            $task->labels()->attach(collect($data['labels'])->pluck('id'));
+            event(new TakingAnActionOnTask($task, 'Task created'));
+            return $task;
+        });
+        return new TaskIndexResource($task);
     }
 
-    public function update(Task $Task, $data)
+    public function update(Task $task, $data)
     {
-        $Task->update($data);
-        return $Task;
+        $task = DB::transaction(function () use ($task, $data) {
+            $task->update($data);
+            $task->labels()->detach();
+            $task->labels()->attach(collect($data['labels'])->pluck('id'));
+            event(new TakingAnActionOnTask($task, 'Task updated'));
+            return $task;
+        });
+        return new TaskIndexResource($task);
     }
 
     public function delete(Task $Task)

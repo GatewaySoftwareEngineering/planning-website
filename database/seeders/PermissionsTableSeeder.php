@@ -336,111 +336,48 @@ class PermissionsTableSeeder extends Seeder
             ),
             35 => 
             array (
-                'id' => 36,
-                'name' => 'to-do_in-progress',
-                'display_name' => 'Change task\'s status from to-do to in-progress',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:16:11',
-                'updated_at' => '2023-02-05 08:16:11',
-            ),
-            36 => 
-            array (
-                'id' => 37,
-                'name' => 'in-progress_testing',
-                'display_name' => 'Change task\'s status from in-progres to testing',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:17:23',
-                'updated_at' => '2023-02-05 08:17:23',
-            ),
-            37 => 
-            array (
-                'id' => 38,
-                'name' => 'dev-review_testing',
-                'display_name' => 'Change task\'s status from dev-review to testing',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:19:13',
-                'updated_at' => '2023-02-05 08:19:13',
-            ),
-            38 => 
-            array (
-                'id' => 39,
-                'name' => 'testing_dev-review',
-                'display_name' => 'Change task\'s status from testing to dev-review',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:19:40',
-                'updated_at' => '2023-02-05 08:19:40',
-            ),
-            39 => 
-            array (
-                'id' => 40,
-                'name' => 'testing_done',
-                'display_name' => 'Change task\'s status from testing to done',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:19:58',
-                'updated_at' => '2023-02-05 08:19:58',
-            ),
-            40 => 
-            array (
-                'id' => 41,
-                'name' => 'done_testing',
-                'display_name' => 'Change task\'s status from done to testing',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:20:18',
-                'updated_at' => '2023-02-05 08:20:18',
-            ),
-            41 => 
-            array (
-                'id' => 42,
-                'name' => 'done_close',
-                'display_name' => 'Change task\'s status from done to close',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:21:22',
-                'updated_at' => '2023-02-05 08:21:22',
-            ),
-            42 => 
-            array (
-                'id' => 43,
-                'name' => 'any_any',
-                'display_name' => 'Change task\'s status from any status to another',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:22:24',
-                'updated_at' => '2023-02-05 08:22:24',
-            ),
-            43 => 
-            array (
-                'id' => 49,
-                'name' => 'in-progress_to-do',
-                'display_name' => 'Change task\'s status from in-progress to to-do',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:58:20',
-                'updated_at' => '2023-02-05 08:58:20',
-            ),
-            44 => 
-            array (
-                'id' => 50,
-                'name' => 'testing_in-progress',
-                'display_name' => 'Change task\'s status from testing to in-progress',
-                'entity_name' => 'tasks',
-                'created_at' => '2023-02-05 08:59:22',
-                'updated_at' => '2023-02-05 08:59:22',
-            ),
-            45 => 
-            array (
-                'id' => 51,
-                'name' => 'test',
-                'display_name' => 'Test permission',
-                'entity_name' => 'tests',
-                'created_at' => '2023-02-05 09:05:20',
-                'updated_at' => '2023-02-05 09:05:20',
-            ),
-            46 => 
-            array (
                 'id' => 52,
                 'name' => 'invite_user_to_board',
                 'display_name' => 'Invite user to board',
                 'entity_name' => 'boards',
                 'created_at' => '2023-02-06 06:31:24',
                 'updated_at' => '2023-02-06 06:31:24',
+            ),
+            36 => 
+            array (
+                'id' => 56,
+                'name' => 'test',
+                'display_name' => 'Test permission',
+                'entity_name' => 'tests',
+                'created_at' => '2023-02-07 15:23:28',
+                'updated_at' => '2023-02-07 15:23:28',
+            ),
+            37 => 
+            array (
+                'id' => 57,
+                'name' => 'move_task',
+                'display_name' => 'Move the task to another status',
+                'entity_name' => 'tasks',
+                'created_at' => '2023-02-07 09:37:58',
+                'updated_at' => '2023-02-07 09:37:58',
+            ),
+            38 => 
+            array (
+                'id' => 58,
+                'name' => 'assign_task',
+                'display_name' => 'Assign a task to user',
+                'entity_name' => 'tasks',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            39 => 
+            array (
+                'id' => 59,
+                'name' => 'view_log_task',
+                'display_name' => 'View a task log',
+                'entity_name' => 'tasks',
+                'created_at' => '2023-02-08 12:34:10',
+                'updated_at' => '2023-02-08 12:34:10',
             ),
         ));
         

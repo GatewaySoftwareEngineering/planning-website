@@ -13,6 +13,7 @@ use App\Http\Requests\Tasks\TaskShowRequest;
 use App\Http\Requests\Tasks\TaskIndexRequest;
 use App\Http\Requests\Tasks\TaskStoreRequest;
 use App\Http\Requests\Tasks\TaskAssignRequest;
+use App\Http\Requests\Tasks\TaskUpdateRequest;
 use App\Http\Resources\Tasks\TaskShowResource;
 
 class TaskController extends Controller
@@ -72,16 +73,21 @@ class TaskController extends Controller
         return $this->respondWithMessage( new TaskShowResource($task), 'Success');
     }
 
-    /**
-     * Update the specified resource in storage.
+     /**
+     * Update the specified task in storage..
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @responseFile status=401 scenario="unauthenticated user" storage/responses/unauthenticated.json
+     * @responseFile status=422 scenario="Invalid inputs" storage/responses/unprocessable-content.json
+     * @responseFile status=403 scenario="Forbidden" storage/responses/forbidden.json
+     * @responseFile status=200 scenario="unauthenticated user creates new task" storage/responses/update-task.json
+     * @param  \Illuminate\Http\TaskUpdateRequest  $request
+     * @param Board $board
+     * @param Task $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TaskUpdateRequest $request, Board $board, Task $task)
     {
-        //
+        return $this->respondWithMessage($this->taskRepository->update($task, $request->validated()), 'Success');
     }
 
     /**

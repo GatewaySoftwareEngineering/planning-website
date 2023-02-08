@@ -30,7 +30,7 @@ class LogAction
         $task->statuses()->attach($task->status_id,[
             'task_id'   => $task->id,
             'assignor_id' => $task->board->owner->id,
-            'assignee_id' => $task->assignee->user_id,
+            'assignee_id' => $task->assignee?->user_id,
             'details'     => $event->details
         ]);
     }

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class RolesTableSeeder extends Seeder
 {
@@ -15,11 +14,12 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+        
 
-        DB::table('roles')->delete();
-
-        DB::table('roles')->insert(array (
-            0 =>
+        \DB::table('roles')->delete();
+        
+        \DB::table('roles')->insert(array (
+            0 => 
             array (
                 'id' => 1,
                 'name' => 'admin',
@@ -27,7 +27,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2023-02-05 08:44:01',
                 'updated_at' => '2023-02-05 08:52:28',
             ),
-            1 =>
+            1 => 
             array (
                 'id' => 2,
                 'name' => 'developer',
@@ -35,7 +35,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2023-02-05 08:44:46',
                 'updated_at' => '2023-02-05 08:44:46',
             ),
-            2 =>
+            2 => 
             array (
                 'id' => 3,
                 'name' => 'tester',
@@ -43,7 +43,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2023-02-05 08:44:56',
                 'updated_at' => '2023-02-05 08:44:56',
             ),
-            3 =>
+            3 => 
             array (
                 'id' => 5,
                 'name' => 'product_owner',
@@ -51,7 +51,7 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2023-02-05 08:49:05',
                 'updated_at' => '2023-02-05 08:49:05',
             ),
-            4 =>
+            4 => 
             array (
                 'id' => 6,
                 'name' => 'test',
@@ -60,7 +60,7 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2023-02-05 09:05:20',
             ),
         ));
-
-
+        
+        
     }
 }

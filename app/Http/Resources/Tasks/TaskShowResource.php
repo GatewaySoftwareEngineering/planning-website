@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Tasks;
 
+use App\Http\Resources\Activities\ActivityShowResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TaskShowResource extends JsonResource
@@ -23,7 +24,7 @@ class TaskShowResource extends JsonResource
             'assignee'       => $this->assignee?->user->name,
             'current_status' => $this->currentStatus->name,
             'labels'         => $this->labels,
-            'log'            => $this->statuses
+            'log'            => ActivityShowResource::collection($this->statuses)
         ];
     }
 }

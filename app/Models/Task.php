@@ -42,7 +42,7 @@ class Task extends Model
 
     public function statuses()
     {
-        return $this->belongsToMany(Status::class, 'activities')->withTimestamps();
+        return $this->belongsToMany(Status::class, 'activities')->withTimestamps()->withPivot('assignor_id', 'assignee_id', 'details');
     }
 
     /*

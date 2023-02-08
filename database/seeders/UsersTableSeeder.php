@@ -71,6 +71,32 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2023-02-05 09:45:37',
                 'updated_at' => '2023-02-05 09:45:37',
             ),
+            4 => 
+            array (
+                'id' => 17,
+                'role_id' => 3,
+                'name' => 'Willa Hagenes IV',
+                'active' => 1,
+                'email' => 'sample@test.com',
+                'email_verified_at' => '2023-02-07 15:23:28',
+                'password' => '$2y$04$9alblH34gEmhoK.YF367eOUARpQIqIUeuaW5DRIx0iYX1J2QQK2cG',
+                'remember_token' => 'BAbszf0cnb',
+                'created_at' => '2023-02-07 15:23:28',
+                'updated_at' => '2023-02-07 15:23:28',
+            ),
+            5 => 
+            array (
+                'id' => 18,
+                'role_id' => 3,
+                'name' => 'Roselyn Nienow',
+                'active' => 1,
+                'email' => 'rylee.little@example.net',
+                'email_verified_at' => '2023-02-07 15:23:28',
+                'password' => '$2y$04$7kdVced322zdFDf8Rw5V1.fAPy4vZiNaFQsNsmrJPSysEMp9qeHYi',
+                'remember_token' => 'FC4qPoUDVV',
+                'created_at' => '2023-02-07 15:23:28',
+                'updated_at' => '2023-02-07 15:23:28',
+            ),
         ));
         
         
