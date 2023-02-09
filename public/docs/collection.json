@@ -1,0 +1,2303 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/127.0.0.1:8015"
+        }
+    ],
+    "info": {
+        "name": "Task management documentation",
+        "_postman_id": "630e0674-e537-4121-a69c-dfd955d7b5ac",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"delores85@example.com\",\"password\":\"}.:MW_V<1p|~V4k#L!\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"user\":{\"id\":1,\"name\":\"Dima\",\"active\":1,\"email\":\"dimaaljammal9410@gmail.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-04T09:43:39.000000Z\",\"updated_at\":\"2023-02-04T09:43:39.000000Z\"},\"token\":\"2|Xa6ztHsI7rtEHAUreuF1bjkgNvMCiUv8jo8vjTod\"}",
+                            "name": "When E-mail and password are valid and user is active"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Incorrect E-mail or password\"}",
+                            "name": "Invalid credentials"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Logout successfully\",\"data\":null}",
+                            "name": "When authenticated"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Board management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Invite user to board",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/invite",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/invite",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"dolore\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":2,\"user_id\":1,\"name\":\"Project 2\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:08:58.000000Z\",\"updated_at\":\"2023-02-05T14:11:34.000000Z\",\"owner\":{\"id\":1,\"role_id\":1,\"name\":\"Dima\",\"active\":1,\"email\":\"dimaaljammal9410@gmail.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T12:08:36.000000Z\",\"updated_at\":\"2023-02-05T12:08:36.000000Z\"}}}",
+                            "name": "unauthenticated user invite specified user to a board"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a listing of the boards.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"ut\",\"limit\":14,\"page\":6}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":13,\"user_id\":1,\"name\":\"project3\",\"description\":null,\"created_at\":\"2023-02-05T16:10:08.000000Z\",\"updated_at\":\"2023-02-05T16:10:08.000000Z\"},{\"id\":5,\"user_id\":2,\"name\":\"Project 2\",\"description\":null,\"created_at\":\"2023-02-05T12:59:38.000000Z\",\"updated_at\":\"2023-02-05T12:59:38.000000Z\"},{\"id\":2,\"user_id\":1,\"name\":\"Project 2\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:08:58.000000Z\",\"updated_at\":\"2023-02-05T14:11:34.000000Z\"}],\"pagination\":{\"total_count\":3,\"total_pages\":1,\"current_page\":1,\"limit\":10}}",
+                            "name": "unauthenticated user creates new user"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created board in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"incidunt\",\"description\":\"Sequi voluptates officiis aperiam est.\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"name\":\"Project 1\",\"description\":\"Our first project\",\"updated_at\":\"2023-02-05T12:10:08.000000Z\",\"created_at\":\"2023-02-05T12:10:08.000000Z\",\"id\":3}}",
+                            "name": "unauthenticated user creates new user"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified board.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":3,\"name\":\"Project 1\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:10:08.000000Z\",\"updated_at\":\"2023-02-05T12:10:08.000000Z\"}}",
+                            "name": "unauthenticated user creates new board"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified board in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"perferendis\",\"description\":\"Sapiente et animi vel ipsam.\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":3,\"name\":\"Project 1\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:10:08.000000Z\",\"updated_at\":\"2023-02-05T12:10:08.000000Z\"}}",
+                            "name": "unauthenticated user updates a board"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified board from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":true}",
+                            "name": "unauthenticated user deletes a board"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Assign task to user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks\/:task_id\/assign",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks\/:task_id\/assign",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "task_id",
+                                    "key": "task_id",
+                                    "value": "10",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"alias\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":10,\"title\":\"Task 1\",\"description\":\"Task 1 description\",\"image\":null,\"due_date\":\"2023-02-10\",\"assignee\":null,\"current_status\":\"in-progress\",\"labels\":[{\"id\":1,\"name\":\"Api\"},{\"id\":2,\"name\":\"Website\"}]}}",
+                            "name": "unauthenticated user assigns a task to user"
+                        }
+                    ]
+                },
+                {
+                    "name": "move a task to another status.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks\/:task_id\/move",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks\/:task_id\/move",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "task_id",
+                                    "key": "task_id",
+                                    "value": "10",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"status_id\":\"aperiam\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":10,\"title\":\"Task 1\",\"description\":\"Task 1 description\",\"image\":null,\"due_date\":\"2023-02-10\",\"assignee\":null,\"current_status\":\"to-do\",\"labels\":[{\"id\":1,\"name\":\"Api\"},{\"id\":2,\"name\":\"Website\"}]}}",
+                            "name": "unauthenticated user moves a task to another status"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a listing of the tasks.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"ex\",\"limit\":14,\"page\":19}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":3,\"title\":\"Test task\",\"description\":\"test\",\"image\":null,\"due_date\":\"2023-05-01\",\"assignee\":\"Developer\",\"current_status\":\"in-progress\",\"labels\":[]},{\"id\":2,\"title\":\"Test task\",\"description\":\"test\",\"image\":null,\"due_date\":\"2023-05-01\",\"assignee\":null,\"current_status\":\"in-progress\",\"labels\":[]}],\"pagination\":{\"total_count\":2,\"total_pages\":1,\"current_page\":1,\"limit\":10}}",
+                            "name": "unauthenticated user browses tasks"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created task in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"consequatur\",\"description\":\"Est dicta aperiam explicabo.\",\"image\":\"cupiditate\",\"due_date\":\"2023-02-08T17:51:39\",\"0\":\"2049-09-24\",\"labels\":[\"accusamus\"]}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":10,\"title\":\"Task 1\",\"description\":\"Task 1 description\",\"image\":null,\"due_date\":\"2023-02-10\",\"assignee\":null,\"current_status\":\"to-do\",\"labels\":[{\"id\":1,\"name\":\"Api\"}]}}",
+                            "name": "unauthenticated user creates new task"
+                        }
+                    ]
+                },
+                {
+                    "name": "View task with log.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "10",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":10,\"title\":\"Task 1\",\"description\":\"Task 1 description\",\"image\":null,\"due_date\":\"2023-02-10\",\"assignee\":null,\"current_status\":\"in-progress\",\"labels\":[{\"id\":1,\"name\":\"Api\"},{\"id\":2,\"name\":\"Website\"}]}}",
+                            "name": "unauthenticated user assigns a task to user"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified task in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "10",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"accusamus\",\"description\":\"Deleniti quod ipsum consequuntur illo.\",\"image\":\"sint\",\"due_date\":\"2023-02-08T17:51:40\",\"0\":\"2094-09-24\",\"labels\":[\"voluptas\"]}"
+                        },
+                        "description": ".",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":10,\"title\":\"Task 1\",\"description\":\"Task 1 description\",\"image\":null,\"due_date\":\"2023-02-10\",\"assignee\":null,\"current_status\":\"to-do\",\"labels\":[{\"id\":1,\"name\":\"Api\"},{\"id\":2,\"name\":\"Website\"}]}}",
+                            "name": "unauthenticated user creates new task"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "10",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "General",
+            "description": "you can access it using {{baseUrl}}\/storage\/images\/{filename}",
+            "item": [
+                {
+                    "name": "Upload a file",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/upload",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/upload"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"file\":\"pvmend\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"filename\":\"yTgprU7rnUJeWb0DwgnNB7OlW3EZQBKZuiVAZzbc.jpg\"}",
+                            "name": "unauthenticated user upload an image"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Label management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the labels.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/labels",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/labels",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"facilis\",\"limit\":8,\"page\":8}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":5,\"board_id\":2,\"name\":\"iOS\",\"created_at\":\"2023-02-06T07:19:45.000000Z\",\"updated_at\":\"2023-02-06T07:19:45.000000Z\"},{\"id\":4,\"board_id\":2,\"name\":\"Android\",\"created_at\":\"2023-02-06T07:19:37.000000Z\",\"updated_at\":\"2023-02-06T07:19:37.000000Z\"},{\"id\":3,\"board_id\":2,\"name\":\"Dashboard\",\"created_at\":\"2023-02-06T07:19:25.000000Z\",\"updated_at\":\"2023-02-06T07:19:25.000000Z\"},{\"id\":2,\"board_id\":2,\"name\":\"Website\",\"created_at\":\"2023-02-06T07:19:10.000000Z\",\"updated_at\":\"2023-02-06T07:19:10.000000Z\"},{\"id\":1,\"board_id\":2,\"name\":\"Api\",\"created_at\":\"2023-02-06T07:19:00.000000Z\",\"updated_at\":\"2023-02-06T07:19:00.000000Z\"}],\"pagination\":{\"total_count\":5,\"total_pages\":1,\"current_page\":1,\"limit\":10}}",
+                            "name": "unauthenticated user browses label"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created label in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/labels",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/labels",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"expedita\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"name\":\"iOS\",\"board_id\":2,\"updated_at\":\"2023-02-06T07:19:45.000000Z\",\"created_at\":\"2023-02-06T07:19:45.000000Z\",\"id\":5}}",
+                            "name": "unauthenticated user creates new label"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified label.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/labels\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/labels\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the label."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":6,\"board_id\":2,\"name\":\"Tesst\",\"created_at\":\"2023-02-06T07:38:39.000000Z\",\"updated_at\":\"2023-02-06T07:41:43.000000Z\",\"board\":{\"id\":2,\"user_id\":1,\"name\":\"Project 2\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:08:58.000000Z\",\"updated_at\":\"2023-02-05T14:11:34.000000Z\",\"owner\":{\"id\":1,\"role_id\":1,\"name\":\"Dima\",\"active\":1,\"email\":\"dimaaljammal9410@gmail.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T12:08:36.000000Z\",\"updated_at\":\"2023-02-05T12:08:36.000000Z\"}}}}",
+                            "name": "unauthenticated user shows label"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified label in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/labels\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/labels\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the label."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"modi\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":5,\"board_id\":2,\"name\":\"iOS\",\"created_at\":\"2023-02-06T07:19:45.000000Z\",\"updated_at\":\"2023-02-06T07:19:45.000000Z\"}}",
+                            "name": "unauthenticated user updates a status"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified label from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/labels\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/labels\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the label."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":true}",
+                            "name": "unauthenticated user deletes a label"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Permission management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the permissions.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[{\"id\":1,\"name\":\"create_user\",\"display_name\":\"Create user\"},{\"id\":2,\"name\":\"update_user\",\"display_name\":\"Update user\"},{\"id\":3,\"name\":\"delete_user\",\"display_name\":\"Delete user\"},{\"id\":4,\"name\":\"browse_user\",\"display_name\":\"Browse users\"},{\"id\":5,\"name\":\"browse_role\",\"display_name\":\"Browse roles\"},{\"id\":6,\"name\":\"create_role\",\"display_name\":\"Create role\"},{\"id\":7,\"name\":\"update_role\",\"display_name\":\"Update role\"},{\"id\":8,\"name\":\"delete_role\",\"display_name\":\"Delete role\"},{\"id\":9,\"name\":\"browse_permission\",\"display_name\":\"Browse permissions\"},{\"id\":10,\"name\":\"create_permission\",\"display_name\":\"Create permissions\"},{\"id\":11,\"name\":\"update_permission\",\"display_name\":\"Update permission\"},{\"id\":12,\"name\":\"delete_permission\",\"display_name\":\"Delete permission\"},{\"id\":13,\"name\":\"browse_board\",\"display_name\":\"Browse boards\"},{\"id\":14,\"name\":\"create_board\",\"display_name\":\"Create board\"},{\"id\":15,\"name\":\"update_board\",\"display_name\":\"Update board\"},{\"id\":16,\"name\":\"delete_board\",\"display_name\":\"Delete board\"},{\"id\":17,\"name\":\"browse_status\",\"display_name\":\"Browse statuses\"},{\"id\":18,\"name\":\"create_status\",\"display_name\":\"Create statuses\"},{\"id\":19,\"name\":\"update_status\",\"display_name\":\"Update status\"},{\"id\":20,\"name\":\"delete_status\",\"display_name\":\"Delete status\"},{\"id\":21,\"name\":\"browse_label\",\"display_name\":\"Browse labels\"},{\"id\":22,\"name\":\"create_label\",\"display_name\":\"Create label\"},{\"id\":23,\"name\":\"update_label\",\"display_name\":\"Update label\"},{\"id\":24,\"name\":\"delete_label\",\"display_name\":\"Delete label\"},{\"id\":25,\"name\":\"browse_task\",\"display_name\":\"Browse tasks\"},{\"id\":26,\"name\":\"create_task\",\"display_name\":\"Create task\"},{\"id\":27,\"name\":\"update_task\",\"display_name\":\"Update task\"},{\"id\":28,\"name\":\"delete_task\",\"display_name\":\"Delete task\"}]",
+                            "name": "unauthenticated user retrieve permissions"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created permission in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"minus\",\"display_name\":\"dolor\",\"entity_name\":\"rerum\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"name\":\"test\",\"display_name\":\"Change task's status from any status to another\",\"entity_name\":\"tasks\",\"id\":45}}",
+                            "name": "unauthenticated user creates new permission"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified permission.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the permission."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified permission in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the permission."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified permission from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the permission."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Role management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of roles.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[{\"id\":1,\"name\":\"product_owner\",\"display_name\":\"Product Owner\",\"created_at\":\"2023-02-04T09:09:56.000000Z\",\"updated_at\":\"2023-02-04T09:09:56.000000Z\"},{\"id\":2,\"name\":\"developer\",\"display_name\":\"Developer\",\"created_at\":\"2023-02-04T09:11:23.000000Z\",\"updated_at\":\"2023-02-04T09:11:23.000000Z\"},{\"id\":3,\"name\":\"tester\",\"display_name\":\"Tester\",\"created_at\":\"2023-02-04T09:11:54.000000Z\",\"updated_at\":\"2023-02-04T09:11:54.000000Z\"}]",
+                            "name": "unauthenticated user retrieve roles"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created role in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"mollitia\",\"display_name\":\"sit\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"name\":\"admin\",\"display_name\":\"Admin\",\"id\":1}}",
+                            "name": "unauthenticated user create new role"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified role.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified role in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"display_name\":\"eum\",\"permissions\":[\"et\"]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":3,\"name\":\"tester\",\"display_name\":\"Tester\"}}",
+                            "name": "unauthenticated user create new role"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified role from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "status management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the status.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/statuses",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/statuses",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"perspiciatis\",\"limit\":16,\"page\":8}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":6,\"board_id\":2,\"name\":\"close\",\"created_at\":\"2023-02-06T08:25:26.000000Z\",\"updated_at\":\"2023-02-06T08:25:26.000000Z\"},{\"id\":5,\"board_id\":2,\"name\":\"done\",\"created_at\":\"2023-02-06T08:25:21.000000Z\",\"updated_at\":\"2023-02-06T08:25:21.000000Z\"},{\"id\":4,\"board_id\":2,\"name\":\"testing\",\"created_at\":\"2023-02-06T08:25:06.000000Z\",\"updated_at\":\"2023-02-06T08:25:06.000000Z\"},{\"id\":3,\"board_id\":2,\"name\":\"dev-review\",\"created_at\":\"2023-02-06T08:24:46.000000Z\",\"updated_at\":\"2023-02-06T08:24:46.000000Z\"},{\"id\":2,\"board_id\":2,\"name\":\"in-progress\",\"created_at\":\"2023-02-06T08:24:33.000000Z\",\"updated_at\":\"2023-02-06T08:24:33.000000Z\"},{\"id\":1,\"board_id\":2,\"name\":\"to-do\",\"created_at\":\"2023-02-06T08:23:56.000000Z\",\"updated_at\":\"2023-02-06T08:23:56.000000Z\"}],\"pagination\":{\"total_count\":6,\"total_pages\":1,\"current_page\":1,\"limit\":10}}",
+                            "name": "unauthenticated user browses statuses"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created status in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/statuses",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/statuses",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"ab\",\"initial\":false}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"name\":\"to-do\",\"board_id\":2,\"updated_at\":\"2023-02-06T08:23:56.000000Z\",\"created_at\":\"2023-02-06T08:23:56.000000Z\",\"id\":1}}",
+                            "name": "unauthenticated user creates new status"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified status.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/statuses\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/statuses\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the status."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":7,\"board_id\":2,\"name\":\"test2\",\"created_at\":\"2023-02-06T08:25:32.000000Z\",\"updated_at\":\"2023-02-06T08:26:00.000000Z\",\"board\":{\"id\":2,\"user_id\":1,\"name\":\"Project 2\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:08:58.000000Z\",\"updated_at\":\"2023-02-05T14:11:34.000000Z\",\"owner\":{\"id\":1,\"role_id\":1,\"name\":\"Dima\",\"active\":1,\"email\":\"dimaaljammal9410@gmail.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T12:08:36.000000Z\",\"updated_at\":\"2023-02-05T12:08:36.000000Z\"}}}}",
+                            "name": "unauthenticated user shows status"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified status in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/statuses\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/statuses\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the status."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"et\",\"initial\":true}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":7,\"board_id\":2,\"name\":\"test2\",\"created_at\":\"2023-02-06T08:25:32.000000Z\",\"updated_at\":\"2023-02-06T08:26:00.000000Z\",\"board\":{\"id\":2,\"user_id\":1,\"name\":\"Project 2\",\"description\":\"Our first project\",\"created_at\":\"2023-02-05T12:08:58.000000Z\",\"updated_at\":\"2023-02-05T14:11:34.000000Z\",\"owner\":{\"id\":1,\"role_id\":1,\"name\":\"Dima\",\"active\":1,\"email\":\"dimaaljammal9410@gmail.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T12:08:36.000000Z\",\"updated_at\":\"2023-02-05T12:08:36.000000Z\"}}}}",
+                            "name": "unauthenticated user updates a status"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified status from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/boards\/:board_id\/statuses\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/boards\/:board_id\/statuses\/:id",
+                            "variable": [
+                                {
+                                    "id": "board_id",
+                                    "key": "board_id",
+                                    "value": "2",
+                                    "description": "The ID of the board."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the status."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":true}",
+                            "name": "unauthenticated user deletes a status"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "user management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Import users from excel file.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/import",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/import"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"file\":\"nihil\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Users have been imported successfully\"}",
+                            "name": "unauthenticated user imports users"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a listing of the users.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"aut\",\"email\":\"patsy.stroman@example.org\",\"role_id\":12,\"limit\":12,\"page\":19}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":3,\"role_id\":2,\"name\":\"Developer\",\"active\":1,\"email\":\"developer@example.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T09:45:18.000000Z\",\"updated_at\":\"2023-02-05T09:45:18.000000Z\"},{\"id\":2,\"role_id\":5,\"name\":\"Product owner\",\"active\":1,\"email\":\"product_ower@example.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T09:44:02.000000Z\",\"updated_at\":\"2023-02-05T09:44:02.000000Z\"}],\"pagination\":{\"total_count\":4,\"total_pages\":2,\"current_page\":2,\"limit\":2}}",
+                            "name": "unauthenticated user creates new user"
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created user in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"amet\",\"email\":\"bsimonis@example.org\",\"password\":\"v-bTytq+c\",\"role_id\":11}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"name\":\"Product owner\",\"email\":\"product_ower@example.com\",\"role_id\":\"5\",\"updated_at\":\"2023-02-05T09:44:02.000000Z\",\"created_at\":\"2023-02-05T09:44:02.000000Z\",\"id\":2}}",
+                            "name": "unauthenticated user browses users"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":4,\"role_id\":3,\"name\":\"Tester\",\"active\":1,\"email\":\"tester@example.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T09:45:37.000000Z\",\"updated_at\":\"2023-02-05T09:45:37.000000Z\"}}",
+                            "name": "unauthenticated user shows status"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified user in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"voluptatem\",\"email\":\"xquitzon@example.net\",\"password\":\"zEuw9<265F\",\"role_id\":4,\"is_active\":false}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"message\":\"The email must be a valid email address.\",\"errors\":{\"email\":[\"The email must be a valid email address.\"]}}",
+                            "name": "Invalid inputs"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":{\"id\":5,\"role_id\":3,\"name\":\"Tester 2\",\"active\":1,\"email\":\"tester2@example.com\",\"email_verified_at\":null,\"created_at\":\"2023-02-05T11:02:34.000000Z\",\"updated_at\":\"2023-02-05T11:15:50.000000Z\"}}",
+                            "name": "unauthenticated user updates a user"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified user from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": "unauthenticated user"
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\"message\":\"This action is unauthorized.\"}",
+                            "name": "Forbidden"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Success\",\"data\":true}",
+                            "name": "unauthenticated user deletes a user"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
